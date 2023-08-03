@@ -11,6 +11,7 @@
 		74AE46BE2A7BE1E700EF5C6F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AE46BD2A7BE1E700EF5C6F /* ContentView.swift */; };
 		74AE46C02A7BE1E800EF5C6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74AE46BF2A7BE1E800EF5C6F /* Assets.xcassets */; };
 		74AE46C32A7BE1E800EF5C6F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74AE46C22A7BE1E800EF5C6F /* Preview Assets.xcassets */; };
+		74AE46CA2A7BE6DA00EF5C6F /* ClubDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AE46C92A7BE6DA00EF5C6F /* ClubDetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		74AE46BD2A7BE1E700EF5C6F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		74AE46BF2A7BE1E800EF5C6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		74AE46C22A7BE1E800EF5C6F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		74AE46C92A7BE6DA00EF5C6F /* ClubDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubDetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				74AE46BB2A7BE1E700EF5C6F /* GolfDistanceTrackerApp.swift */,
 				74AE46BD2A7BE1E700EF5C6F /* ContentView.swift */,
+				74AE46C92A7BE6DA00EF5C6F /* ClubDetailsView.swift */,
 				74AE46BF2A7BE1E800EF5C6F /* Assets.xcassets */,
 				74AE46C12A7BE1E800EF5C6F /* Preview Content */,
 			);
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74AE46CA2A7BE6DA00EF5C6F /* ClubDetailsView.swift in Sources */,
 				74AE46BE2A7BE1E700EF5C6F /* ContentView.swift in Sources */,
 				74AE46BC2A7BE1E700EF5C6F /* GolfDistanceTrackerApp.swift in Sources */,
 			);

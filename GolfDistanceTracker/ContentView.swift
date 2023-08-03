@@ -15,8 +15,16 @@ struct ContentView: View {
     // MARK: - Body
     var body: some View {
         NavigationStack {
-            Text("Clubs and distance")
-                .navigationTitle("Club Distance")
+            List(0..<18) { item in
+
+                NavigationLink {
+                    ClubDetailsView()
+                } label: {
+                    Text("\(item) - Clubs and distance ")
+                }
+
+            }
+            .navigationTitle("Club Distance")
         }
        
     }
