@@ -8,8 +8,76 @@
 import SwiftUI
 
 struct ClubDetailsView: View {
+    // MARK: - Properties
+    
+    @State private var noteText = ""
+    @State private var brandNameText = ""
+    @State private var ballNameText = ""
+    @State private var carryDistance: Double?
+    //Focus is it receiving user input or not. Similar to @State property
+    @FocusState private var isFocused: Bool
+    @State private var shaftFlex = "Regular"
+    
+    
+    
+    //Array of Strings
+    let shaftFlexType = ["Regular", "Stiff", "X Stiff", "Senior", "Ladies"]
+    
+    
+    
+    // MARK: - Body
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            VStack {
+                Form {
+                    TextField("Brand name", text: $brandNameText )
+                        .focused($isFocused)
+                    
+                    Picker("Flex", selection: $shaftFlex) {
+                        ForEach(shaftFlexType, id: \.self) {
+                            Text($0)
+                        }
+                    }
+                    
+                    TextField("Ball brand", text: $ballNameText)
+                        .focused($isFocused)
+                    
+                    TextField("Carry distance", value: $carryDistance, format: .number)
+                        .keyboardType(.decimalPad)
+                        .focused($isFocused)
+                    
+       
+                    Section("Notes"){
+                        TextEditor(text: $noteText)
+                            .lineLimit(5)
+                            .lineSpacing(5)
+                            .frame(height: 280)
+                            .focused($isFocused)
+                    }
+                    .headerProminence(.increased)
+
+                }
+            }
+            .navigationTitle("Club name")
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button {
+                        isFocused = false
+                    } label: {
+                        Text("Done")
+                    }
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        //Save info
+                    } label: {
+                        Text("Save")
+                    }
+                }
+            }
+        }
     }
 }
 
