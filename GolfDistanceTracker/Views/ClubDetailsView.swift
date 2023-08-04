@@ -14,15 +14,17 @@ struct ClubDetailsView: View {
     @State private var brandNameText = ""
     @State private var ballNameText = ""
     @State private var carryDistance: Double?
+    @State private var shaftType = ""
     //Focus is it receiving user input or not. Similar to @State property
     @FocusState private var isFocused: Bool
     @State private var shaftFlex = "Regular"
+    @State private var wedgeSelection = "N/A"
     
     
     
     //Array of Strings
     let shaftFlexType = ["Regular", "Stiff", "X Stiff", "Senior", "Ladies"]
-    
+    let wedgeDegrees = ["N/A", "42°", "44°", "46°", "48°", "50°", "52°", "54°", "56°", "58°", "60°", "62°", "64°"]
     
     
     // MARK: - Body
@@ -33,8 +35,17 @@ struct ClubDetailsView: View {
                     TextField("Brand name", text: $brandNameText )
                         .focused($isFocused)
                     
+                    TextField("Shaft", text: $shaftType)
+                        .focused($isFocused)
+                    
                     Picker("Flex", selection: $shaftFlex) {
                         ForEach(shaftFlexType, id: \.self) {
+                            Text($0)
+                        }
+                    }
+                    
+                    Picker("Loft", selection: $wedgeSelection) {
+                        ForEach(wedgeDegrees, id: \.self) {
                             Text($0)
                         }
                     }
@@ -42,18 +53,21 @@ struct ClubDetailsView: View {
                     TextField("Ball brand", text: $ballNameText)
                         .focused($isFocused)
                     
-                    TextField("Carry distance (yds)", value: $carryDistance, format: .number)
-                        .keyboardType(.decimalPad)
-                        .focused($isFocused)
+                    HStack {
+                        TextField("Carry distance (yds)", value: $carryDistance, format: .number)
+                            .keyboardType(.decimalPad)
+                            .focused($isFocused)
+                        Text("yds")
+                    }
+
                     
-       
                     Section("Notes"){
                         ZStack(alignment: .topLeading) {
                             TextEditor(text: $noteText)
                                 .foregroundColor(.primary)
                                 .lineLimit(5)
                                 .lineSpacing(5)
-                                .frame(height: 280)
+                                .frame(height: 250)
                                 .focused($isFocused)
                             
                             if !isFocused && noteText.isEmpty {
@@ -63,7 +77,7 @@ struct ClubDetailsView: View {
                         }
                     }
                     .headerProminence(.increased)
-
+                
                 }
             }
             .navigationTitle("Club name")
