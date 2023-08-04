@@ -34,6 +34,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		744C9AB32A7D6B7100E31EB7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				74AE46BD2A7BE1E700EF5C6F /* ContentView.swift */,
+				74AE46C92A7BE6DA00EF5C6F /* ClubDetailsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		74AE46AF2A7BE1E700EF5C6F = {
 			isa = PBXGroup;
 			children = (
@@ -54,8 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				74AE46BB2A7BE1E700EF5C6F /* GolfDistanceTrackerApp.swift */,
-				74AE46BD2A7BE1E700EF5C6F /* ContentView.swift */,
-				74AE46C92A7BE6DA00EF5C6F /* ClubDetailsView.swift */,
+				744C9AB32A7D6B7100E31EB7 /* Views */,
 				74AE46BF2A7BE1E800EF5C6F /* Assets.xcassets */,
 				74AE46C12A7BE1E800EF5C6F /* Preview Content */,
 			);

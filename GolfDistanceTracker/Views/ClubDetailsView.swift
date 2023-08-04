@@ -42,17 +42,25 @@ struct ClubDetailsView: View {
                     TextField("Ball brand", text: $ballNameText)
                         .focused($isFocused)
                     
-                    TextField("Carry distance", value: $carryDistance, format: .number)
+                    TextField("Carry distance (yds)", value: $carryDistance, format: .number)
                         .keyboardType(.decimalPad)
                         .focused($isFocused)
                     
        
                     Section("Notes"){
-                        TextEditor(text: $noteText)
-                            .lineLimit(5)
-                            .lineSpacing(5)
-                            .frame(height: 280)
-                            .focused($isFocused)
+                        ZStack(alignment: .topLeading) {
+                            TextEditor(text: $noteText)
+                                .foregroundColor(.primary)
+                                .lineLimit(5)
+                                .lineSpacing(5)
+                                .frame(height: 280)
+                                .focused($isFocused)
+                            
+                            if !isFocused && noteText.isEmpty {
+                                Text("Add notes here")
+                                    .foregroundColor(.secondary)
+                            }
+                        }
                     }
                     .headerProminence(.increased)
 
