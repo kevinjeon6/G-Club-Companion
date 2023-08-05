@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		744C9AB92A7D8F1700E31EB7 /* ClubDistanceRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744C9AB82A7D8F1700E31EB7 /* ClubDistanceRowView.swift */; };
+		744C9ABB2A7DBC7F00E31EB7 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744C9ABA2A7DBC7F00E31EB7 /* ColorExtension.swift */; };
 		74AE46BC2A7BE1E700EF5C6F /* GolfDistanceTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AE46BB2A7BE1E700EF5C6F /* GolfDistanceTrackerApp.swift */; };
 		74AE46BE2A7BE1E700EF5C6F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AE46BD2A7BE1E700EF5C6F /* ContentView.swift */; };
 		74AE46C02A7BE1E800EF5C6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74AE46BF2A7BE1E800EF5C6F /* Assets.xcassets */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		744C9AB82A7D8F1700E31EB7 /* ClubDistanceRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubDistanceRowView.swift; sourceTree = "<group>"; };
+		744C9ABA2A7DBC7F00E31EB7 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		74AE46B82A7BE1E700EF5C6F /* GolfDistanceTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GolfDistanceTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74AE46BB2A7BE1E700EF5C6F /* GolfDistanceTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GolfDistanceTrackerApp.swift; sourceTree = "<group>"; };
 		74AE46BD2A7BE1E700EF5C6F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -38,9 +42,18 @@
 			isa = PBXGroup;
 			children = (
 				74AE46BD2A7BE1E700EF5C6F /* ContentView.swift */,
+				744C9AB82A7D8F1700E31EB7 /* ClubDistanceRowView.swift */,
 				74AE46C92A7BE6DA00EF5C6F /* ClubDetailsView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		744C9ABC2A7DBD9400E31EB7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				744C9ABA2A7DBC7F00E31EB7 /* ColorExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		74AE46AF2A7BE1E700EF5C6F = {
@@ -63,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				74AE46BB2A7BE1E700EF5C6F /* GolfDistanceTrackerApp.swift */,
+				744C9ABC2A7DBD9400E31EB7 /* Extensions */,
 				744C9AB32A7D6B7100E31EB7 /* Views */,
 				74AE46BF2A7BE1E800EF5C6F /* Assets.xcassets */,
 				74AE46C12A7BE1E800EF5C6F /* Preview Content */,
@@ -148,9 +162,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				744C9AB92A7D8F1700E31EB7 /* ClubDistanceRowView.swift in Sources */,
 				74AE46CA2A7BE6DA00EF5C6F /* ClubDetailsView.swift in Sources */,
 				74AE46BE2A7BE1E700EF5C6F /* ContentView.swift in Sources */,
 				74AE46BC2A7BE1E700EF5C6F /* GolfDistanceTrackerApp.swift in Sources */,
+				744C9ABB2A7DBC7F00E31EB7 /* ColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
