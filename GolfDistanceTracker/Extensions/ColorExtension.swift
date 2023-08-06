@@ -10,5 +10,6 @@ import SwiftUI
 extension Color {
     static let leadingGreenColor = Color("leading-green")
     static let trailingGreenColor = Color("trailing-green")
+    static let listBackgroundColor = Color("list-background")
 }
 
