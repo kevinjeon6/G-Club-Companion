@@ -42,6 +42,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		743553E02A81ABFF00A6D332 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		744C9AB32A7D6B7100E31EB7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +65,14 @@
 				744C9ABA2A7DBC7F00E31EB7 /* ColorExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		749D0CDD2A87EDF700F1E4F5 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				744C9AC42A80628500E31EB7 /* DataController.swift */,
+			);
+			path = "Core Data";
 			sourceTree = "<group>";
 		};
 		74AE46AF2A7BE1E700EF5C6F = {
@@ -81,7 +96,8 @@
 			children = (
 				74AE46BB2A7BE1E700EF5C6F /* GolfDistanceTrackerApp.swift */,
 				744C9AC62A80872E00E31EB7 /* Golf_Distance_Tracker.xcdatamodeld */,
-				744C9AC42A80628500E31EB7 /* DataController.swift */,
+				749D0CDD2A87EDF700F1E4F5 /* Core Data */,
+				743553E02A81ABFF00A6D332 /* Model */,
 				744C9ABC2A7DBD9400E31EB7 /* Extensions */,
 				744C9AB32A7D6B7100E31EB7 /* Views */,
 				74AE46BF2A7BE1E800EF5C6F /* Assets.xcassets */,
