@@ -11,13 +11,12 @@ import SwiftUI
 struct ClubDistanceRowView: View {
     
     // MARK: - Properties
-    let value: Int
     let highestValue: Int
     let width: CGFloat = 250
     let color1: Color = .leadingGreenColor
     let color2: Color = .trailingGreenColor
     let clubName: String
-    
+    var carryDistance: Int16
     
     
     // MARK: - Body
@@ -30,7 +29,7 @@ struct ClubDistanceRowView: View {
                     .frame(width: width, height: 40)
                 
                 RoundedRectangle(cornerRadius: 10)
-                    .frame(width: width * CGFloat(value) / CGFloat(highestValue), height: 40)
+                    .frame(width: width * CGFloat(carryDistance) / CGFloat(highestValue), height: 40)
                     .background(
                         LinearGradient(gradient: Gradient(colors: [color1, color2]), startPoint: .leading, endPoint: .trailing)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
@@ -45,7 +44,8 @@ struct ClubDistanceRowView: View {
             .font(.system(size: 26, weight: .semibold, design: .rounded))
             .foregroundColor(.primary)
             Spacer()
-            Text("123")
+            Text("\(carryDistance)")
+                .font(.system(size: 18, weight: .semibold, design: .rounded))
             
         }
         .padding(.trailing)
@@ -56,6 +56,6 @@ struct ClubDistanceRowView: View {
 
 struct ClubDistanceRowView_Previews: PreviewProvider {
     static var previews: some View {
-        ClubDistanceRowView(value: 150, highestValue: 225, clubName: "Driver")
+        ClubDistanceRowView(highestValue: 225, clubName: "Driver", carryDistance: 69)
     }
 }
