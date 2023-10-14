@@ -25,7 +25,7 @@ struct ClubDistanceRowView: View {
         HStack {
             ZStack(alignment: .leading) {
                 RoundedRectangle(cornerRadius: 10)
-                    .fill(Color.black.opacity(0.1))
+                    .fill(Color.white.opacity(0.0))
                     .frame(width: width, height: 40)
                 
                 RoundedRectangle(cornerRadius: 10)
@@ -41,11 +41,14 @@ struct ClubDistanceRowView: View {
                     .padding(.leading)
                 
             }
-            .font(.system(size: 26, weight: .semibold, design: .rounded))
+            .font(.system(.title, design: .rounded)) //title is gives size of 25
+            .fontWeight(.semibold)
             .foregroundColor(.primary)
             Spacer()
             Text("\(carryDistance)")
-                .font(.system(size: 18, weight: .semibold, design: .rounded))
+                .font(.system(.title2, design: .rounded)) //title2 gives size of 19
+                .fontWeight(.semibold)
+            
             
         }
         .padding(.trailing)
