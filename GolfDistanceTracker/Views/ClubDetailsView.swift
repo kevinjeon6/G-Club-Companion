@@ -37,9 +37,15 @@ struct ClubDetailsView: View {
             Form {
                 TextField("Brand name", text: $clubBrand)
                     .focused($isFocused)
+                    .onAppear{
+                        UITextField.appearance().clearButtonMode = .whileEditing
+                    }
                 
                 TextField("Shaft", text: $shaftName)
                     .focused($isFocused)
+                    .onAppear{
+                        UITextField.appearance().clearButtonMode = .whileEditing
+                    }
                 
                 Picker("Flex", selection: $flex) {
                     ForEach(shaftFlexType, id: \.self) {
@@ -55,11 +61,17 @@ struct ClubDetailsView: View {
                 
                 TextField("Ball brand", text: $ballBrand)
                     .focused($isFocused)
+                    .onAppear{
+                        UITextField.appearance().clearButtonMode = .whileEditing
+                    }
                 
                 HStack {
                     TextField("Carry distance (yds)", value: $carryDistance, format: .number)
                         .keyboardType(.numberPad)
                         .focused($isFocused)
+                        .onAppear{
+                            UITextField.appearance().clearButtonMode = .whileEditing
+                        }
                     Text("yds")
                 }
                 
@@ -81,7 +93,35 @@ struct ClubDetailsView: View {
                 }
                 .headerProminence(.increased)
                 
-                
+           
+                    Button {
+                        clubDetails?.clubBrand = clubBrand
+                        clubDetails?.shaftName = shaftName
+                        clubDetails?.flex = flex
+                        clubDetails?.loft = loft
+                        clubDetails?.ballBrand = ballBrand
+                        clubDetails?.carryDistance = Int16(carryDistance)
+                        clubDetails?.notes = notes
+//
+//                        //Save info
+                        do {
+
+                            if moc.hasChanges {
+                                try moc.save()
+                            }
+//                            
+//                            //Dismiss after saving
+                            dismiss()
+                        } catch {
+                            print("Error saving data: \(error)")
+                        }
+                    } label: {
+                        Text("Save")
+                            .foregroundStyle(Color.white)
+                            .frame(maxWidth: .infinity)
+                    }
+                    .listRowBackground(Color.blue)
+                   
             }
             .onAppear{
                 clubBrand = clubDetails?.clubBrand ?? ""
@@ -92,7 +132,7 @@ struct ClubDetailsView: View {
                 notes = clubDetails?.notes ?? ""
                 ballBrand = clubDetails?.ballBrand ?? ""
             }
-            .navigationTitle("Club name")
+            .navigationTitle(clubDetails?.name ?? "N/A")
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
                     Spacer()
@@ -105,23 +145,31 @@ struct ClubDetailsView: View {
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        clubDetails?.clubBrand = clubBrand
-                        clubDetails?.shaftName = shaftName
-                        clubDetails?.flex = flex
-                        clubDetails?.loft = loft
-                        clubDetails?.ballBrand = ballBrand
-                        clubDetails?.carryDistance = Int16(carryDistance)
-                        clubDetails?.notes = notes
-                        clubDetails?.id = UUID()
-                        
+                        clubDetails?.clubBrand = ""
+                        clubDetails?.shaftName = ""
+                        clubDetails?.flex = "Regular"
+                        clubDetails?.loft = "N/A"
+                        clubDetails?.ballBrand = ""
+                        clubDetails?.carryDistance = 0
+                        clubDetails?.notes = ""
                         //Save info
-                        try? moc.save()
+                        do {
+                            
+                            try moc.save()
+                  
+                            
+                            //Dismiss after saving
+                            dismiss()
+                        } catch {
+                            print("Error saving data: \(error)")
+                        }
                      
-                        //Dismiss after saving
-                        dismiss()
+                        
                     } label: {
-                        Text("Save")
+                        Text("Clear")
                     }
+                    
+                    
                 }
             }
         }
