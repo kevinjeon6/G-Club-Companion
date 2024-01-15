@@ -7,7 +7,7 @@
 
 import Foundation
 
-
+//Model for JSON data
 struct ClubResponse: Decodable, Hashable {
     let name: String
 }
