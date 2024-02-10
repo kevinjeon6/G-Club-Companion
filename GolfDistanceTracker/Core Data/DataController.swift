@@ -11,6 +11,7 @@ import SwiftUI
 
 class DataController: ObservableObject {
     
+    //Set up container
     let container = NSPersistentContainer(name: "Golf_Distance_Tracker")
     private let entityName = "ClubDetailsEntity"
     
@@ -20,7 +21,7 @@ class DataController: ObservableObject {
             if let error {
                 print("Core data failed to load \(error.localizedDescription)")
             } else {
-                print("Core dta successfully loaded")
+                print("Core data successfully loaded")
             }
         }
     }
