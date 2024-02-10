@@ -11,62 +11,51 @@ struct ClubDetailsView: View {
     // MARK: - Properties
     @Environment(\.dismiss) var dismiss
     @Environment(\.managedObjectContext) private var moc
+    @EnvironmentObject var vm: ClubDetailManager
+    
     
     var clubDetails: ClubDetailsEntity?
-
+    
     //Focus is it receiving user input or not. Similar to @State property
     @FocusState private var isFocused: Bool
-    @State private var notes = ""
-    @State private var clubBrand = ""
-    @State private var ballBrand = ""
-    @State private var carryDistance = 0
-    @State private var shaftName = ""
-    @State private var flex = "Regular"
-    @State private var loft = "N/A"
-    
-    
-    
-    //Array of Strings
-    private let shaftFlexType = ["Regular", "Stiff", "X Stiff", "Senior", "Ladies"]
-    private let wedgeDegrees = ["N/A", "42°", "44°", "46°", "48°", "50°", "52°", "54°", "56°", "58°", "60°", "62°", "64°"]
     
     
     // MARK: - Body
     var body: some View {
         NavigationStack {
             Form {
-                TextField("Brand name", text: $clubBrand)
+                TextField("Brand name", text: $vm.clubBrand)
                     .focused($isFocused)
                     .onAppear{
                         UITextField.appearance().clearButtonMode = .whileEditing
                     }
                 
-                TextField("Shaft", text: $shaftName)
+                TextField("Shaft", text: $vm.shaftName)
                     .focused($isFocused)
                     .onAppear{
                         UITextField.appearance().clearButtonMode = .whileEditing
                     }
                 
-                Picker("Flex", selection: $flex) {
-                    ForEach(shaftFlexType, id: \.self) {
+                Picker("Flex", selection: $vm.flex) {
+                    ForEach(vm.shaftFlexType, id: \.self) {
                         Text($0)
                     }
                 }
                 
-                Picker("Loft", selection: $loft) {
-                    ForEach(wedgeDegrees, id: \.self) {
+                Picker("Loft", selection: $vm.loft) {
+                    ForEach(vm.wedgeDegrees, id: \.self) {
                         Text($0)
                     }
                 }
                 
-                TextField("Ball brand", text: $ballBrand)
+                TextField("Ball brand", text: $vm.ballBrand)
                     .focused($isFocused)
                     .onAppear{
                         UITextField.appearance().clearButtonMode = .whileEditing
                     }
                 
                 HStack {
-                    TextField("Carry distance (yds)", value: $carryDistance, format: .number)
+                    TextField("Carry distance (yds)", value: $vm.carryDistance, format: .number)
                         .keyboardType(.numberPad)
                         .focused($isFocused)
                         .onAppear{
@@ -78,14 +67,14 @@ struct ClubDetailsView: View {
                 
                 Section("Notes"){
                     ZStack(alignment: .topLeading) {
-                        TextEditor(text: $notes)
+                        TextEditor(text: $vm.notes)
                             .foregroundColor(.primary)
                             .lineLimit(5)
                             .lineSpacing(5)
                             .frame(height: 250)
                             .focused($isFocused)
                         
-                        if !isFocused && notes.isEmpty {
+                        if !isFocused && vm.notes.isEmpty {
                             Text("Add notes here")
                                 .foregroundColor(.secondary)
                         }
@@ -93,44 +82,40 @@ struct ClubDetailsView: View {
                 }
                 .headerProminence(.increased)
                 
-           
-                    Button {
-                        clubDetails?.clubBrand = clubBrand
-                        clubDetails?.shaftName = shaftName
-                        clubDetails?.flex = flex
-                        clubDetails?.loft = loft
-                        clubDetails?.ballBrand = ballBrand
-                        clubDetails?.carryDistance = Int16(carryDistance)
-                        clubDetails?.notes = notes
-//
-//                        //Save info
-                        do {
-
-                            if moc.hasChanges {
-                                try moc.save()
-                            }
-//                            
-//                            //Dismiss after saving
-                            dismiss()
-                        } catch {
-                            print("Error saving data: \(error)")
-                        }
-                    } label: {
-                        Text("Save")
-                            .foregroundStyle(Color.white)
-                            .frame(maxWidth: .infinity)
-                    }
-                    .listRowBackground(Color.blue)
+                // MARK: - Save Button
+                Button {
+                    
+                    
+                    clubDetails?.clubBrand = vm.clubBrand
+                    clubDetails?.shaftName = vm.shaftName
+                    clubDetails?.flex = vm.flex
+                    clubDetails?.loft = vm.loft
+                    clubDetails?.ballBrand = vm.ballBrand
+                    clubDetails?.carryDistance = Int16(vm.carryDistance)
+                    clubDetails?.notes = vm.notes
                    
+                    //Save info
+                    
+                    vm.saveData(context: moc)
+                    //Dismiss after saving
+                    dismiss()
+ 
+                } label: {
+                    Text("Save")
+                        .foregroundStyle(Color.white)
+                        .frame(maxWidth: .infinity)
+                }
+                .listRowBackground(Color.blue)
+                
             }
             .onAppear{
-                clubBrand = clubDetails?.clubBrand ?? ""
-                shaftName = clubDetails?.shaftName ?? ""
-                carryDistance = Int(clubDetails?.carryDistance ?? 0)
-                loft = clubDetails?.loft ?? ""
-                flex = clubDetails?.flex ?? ""
-                notes = clubDetails?.notes ?? ""
-                ballBrand = clubDetails?.ballBrand ?? ""
+                vm.clubBrand = clubDetails?.clubBrand ?? ""
+                vm.shaftName = clubDetails?.shaftName ?? ""
+                vm.carryDistance = Int(clubDetails?.carryDistance ?? 0)
+                vm.loft = clubDetails?.loft ?? ""
+                vm.flex = clubDetails?.flex ?? ""
+                vm.notes = clubDetails?.notes ?? ""
+                vm.ballBrand = clubDetails?.ballBrand ?? ""
             }
             .navigationTitle(clubDetails?.name ?? "N/A")
             .toolbar {
@@ -144,6 +129,8 @@ struct ClubDetailsView: View {
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
+                    
+                    // MARK: - Clear button
                     Button {
                         clubDetails?.clubBrand = ""
                         clubDetails?.shaftName = ""
@@ -152,18 +139,14 @@ struct ClubDetailsView: View {
                         clubDetails?.ballBrand = ""
                         clubDetails?.carryDistance = 0
                         clubDetails?.notes = ""
+                        
+                        
                         //Save info
-                        do {
-                            
-                            try moc.save()
-                  
-                            
-                            //Dismiss after saving
-                            dismiss()
-                        } catch {
-                            print("Error saving data: \(error)")
-                        }
-                     
+                        vm.saveData(context: moc)
+//                        //Dismiss after saving
+                        dismiss()
+                        
+
                         
                     } label: {
                         Text("Clear")

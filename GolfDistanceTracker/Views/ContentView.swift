@@ -10,9 +10,9 @@ import SwiftUI
 struct ContentView: View {
     
     // MARK: - Properties
-    @Environment(\.managedObjectContext) var moc
+    @Environment(\.managedObjectContext) private var moc
     @FetchRequest<ClubDetailsEntity>(sortDescriptors: [SortDescriptor(\.name)]) private var golfClub
-    @StateObject var vm = GolfDistanceTrackerVM()
+    @EnvironmentObject var vm: ClubDetailManager
     
     //This is the first time the user opened the app and loaded the data. Then any launches after this will set it to false
     @AppStorage("isFirstTimeLoaded") private var isFirstTimeLoaded = true
@@ -43,8 +43,6 @@ struct ContentView: View {
              vm.getPreLoadedJSON("preLoadedData", context: moc, firstTime: &isFirstTimeLoaded)
             }
         }
-        .environmentObject(vm)
-       
     }
 }
 
