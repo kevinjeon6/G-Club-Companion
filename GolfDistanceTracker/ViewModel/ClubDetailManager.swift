@@ -22,12 +22,6 @@ class ClubDetailManager: ObservableObject {
     
     
     
-   
-    
-    init() {
-
-    }
-    
     
     // MARK: - Save data
     func saveData(context: NSManagedObjectContext) {

@@ -11,11 +11,13 @@ import SwiftUI
 struct GolfDistanceTrackerApp: App {
     
     @StateObject private var dataController = DataController()
+    @StateObject var clubDetailManager = ClubDetailManager()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environment(\.managedObjectContext, dataController.container.viewContext)
+                .environmentObject(clubDetailManager)
         }
     }
 }
