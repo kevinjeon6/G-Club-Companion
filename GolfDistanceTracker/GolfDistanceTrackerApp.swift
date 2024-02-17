@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TipKit
 
 @main
 struct GolfDistanceTrackerApp: App {
@@ -19,5 +20,16 @@ struct GolfDistanceTrackerApp: App {
                 .environment(\.managedObjectContext, dataController.container.viewContext)
                 .environmentObject(clubDetailManager)
         }
+    }
+    
+    //Loading Tips when the app starts. Best practice is to call this once per app session, such as in the init() method of the app
+    init() {
+        //Configure and load all tips in the app
+        try? Tips.configure([
+            .datastoreLocation(.applicationDefault),
+            .displayFrequency(.immediate)
+        ])
+        
+    
     }
 }
