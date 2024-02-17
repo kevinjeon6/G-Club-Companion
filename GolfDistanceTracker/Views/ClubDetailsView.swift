@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TipKit
 
 struct ClubDetailsView: View {
     // MARK: - Properties
@@ -15,6 +16,7 @@ struct ClubDetailsView: View {
     
     
     var clubDetails: ClubDetailsEntity?
+    private let inputTip = AddClubInfoTip()
     
     //Focus is it receiving user input or not. Similar to @State property
     @FocusState private var isFocused: Bool
@@ -116,6 +118,10 @@ struct ClubDetailsView: View {
                 vm.flex = clubDetails?.flex ?? ""
                 vm.notes = clubDetails?.notes ?? ""
                 vm.ballBrand = clubDetails?.ballBrand ?? ""
+                
+                Task {
+                    await AddClubInfoTip.didSelectClub.donate()
+                }
             }
             .navigationTitle(clubDetails?.name ?? "N/A")
             .toolbar {
@@ -145,9 +151,7 @@ struct ClubDetailsView: View {
                         vm.saveData(context: moc)
 //                        //Dismiss after saving
                         dismiss()
-                        
-
-                        
+   
                     } label: {
                         Text("Clear")
                     }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TipKit
 
 struct ContentView: View {
     
@@ -14,17 +15,24 @@ struct ContentView: View {
     @FetchRequest<ClubDetailsEntity>(sortDescriptors: [SortDescriptor(\.name)]) private var golfClub
     @EnvironmentObject var vm: ClubDetailManager
     
-    //This is the first time the user opened the app and loaded the data. Then any launches after this will set it to false
+    ///This is the first time the user opened the app and loaded the data. Then any launches after this will set it to false
     @AppStorage("isFirstTimeLoaded") private var isFirstTimeLoaded = true
     
+    //Inline Tip View
+    private let inputTip = AddClubInfoTip()
 
     // MARK: - Body
     var body: some View {
         
-        //This view only display the data
+        ///This view only display the data
         NavigationStack {
-            List {
-                ForEach(golfClub, id: \.self) { club in
+            List{
+                TipView(inputTip)
+                    .listRowBackground(Color.listBackgroundColor)
+                    .tipBackground(.ultraThinMaterial)
+
+                ///Don't need id for list. Core Data automatically makes the entities conform to Identifiable
+                ForEach(golfClub) { club in
                     NavigationLink {
                         ClubDetailsView(clubDetails: club)
                     } label: {
@@ -49,5 +57,11 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .task {
+                try? Tips.configure([
+                    .datastoreLocation(.applicationDefault),
+                    .displayFrequency(.immediate)
+                ])
+            }
     }
 }
