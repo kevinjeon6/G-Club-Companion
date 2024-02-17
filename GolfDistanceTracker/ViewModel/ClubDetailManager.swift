@@ -63,7 +63,7 @@ class ClubDetailManager: ObservableObject {
                 preloadedGolfClubs.append(loadedEntity)
             }
             
-            
+            saveData(context: context)
             firstTime = false
         }
 
