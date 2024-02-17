@@ -19,6 +19,7 @@
 		74AE46C02A7BE1E800EF5C6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74AE46BF2A7BE1E800EF5C6F /* Assets.xcassets */; };
 		74AE46C32A7BE1E800EF5C6F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74AE46C22A7BE1E800EF5C6F /* Preview Assets.xcassets */; };
 		74AE46CA2A7BE6DA00EF5C6F /* ClubDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AE46C92A7BE6DA00EF5C6F /* ClubDetailsView.swift */; };
+		74F58C732B7844EC00BE9FF5 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F58C722B7844EC00BE9FF5 /* Tip.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		74AE46BF2A7BE1E800EF5C6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		74AE46C22A7BE1E800EF5C6F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		74AE46C92A7BE6DA00EF5C6F /* ClubDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubDetailsView.swift; sourceTree = "<group>"; };
+		74F58C722B7844EC00BE9FF5 /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 			children = (
 				74AE46BB2A7BE1E700EF5C6F /* GolfDistanceTrackerApp.swift */,
 				744C9AC62A80872E00E31EB7 /* Golf_Distance_Tracker.xcdatamodeld */,
+				74F58C742B7844F400BE9FF5 /* Utilities */,
 				744C9ABC2A7DBD9400E31EB7 /* Extensions */,
 				749DB7762A9E85640057A4A8 /* Data */,
 				749D0CDD2A87EDF700F1E4F5 /* Core Data */,
@@ -137,6 +140,14 @@
 				74AE46C22A7BE1E800EF5C6F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		74F58C742B7844F400BE9FF5 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				74F58C722B7844EC00BE9FF5 /* Tip.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,6 +228,7 @@
 				744C9AC82A80872E00E31EB7 /* Golf_Distance_Tracker.xcdatamodeld in Sources */,
 				74AE46BE2A7BE1E700EF5C6F /* ContentView.swift in Sources */,
 				749DB77A2A9E85B00057A4A8 /* DataNetworkManager.swift in Sources */,
+				74F58C732B7844EC00BE9FF5 /* Tip.swift in Sources */,
 				74AE46BC2A7BE1E700EF5C6F /* GolfDistanceTrackerApp.swift in Sources */,
 				744C9ABB2A7DBC7F00E31EB7 /* ColorExtension.swift in Sources */,
 			);
@@ -275,7 +287,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -329,7 +341,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -355,6 +367,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -365,9 +378,10 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -387,6 +401,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -397,9 +412,10 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
