@@ -36,7 +36,7 @@ struct ContentView: View {
                     NavigationLink {
                         ClubDetailsView(clubDetails: club)
                     } label: {
-                        ClubDistanceRowView(highestValue: 500, clubName: club.name ?? "", carryDistance: club.carryDistance)
+                        ClubDistanceRowView(clubName: club.name ?? "", carryDistance: club.carryDistance)
                     }
                 }
                 .listRowSeparator(.hidden)
