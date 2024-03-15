@@ -13,15 +13,48 @@ struct ClubDetailsView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.managedObjectContext) private var moc
     @EnvironmentObject var vm: ClubDetailManager
+    ///Focus is it receiving user input or not. Similar to @State property
+    @FocusState private var isFocused: Bool
+    @State private var showAlert = false
     
     
     var clubDetails: ClubDetailsEntity?
     private let inputTip = AddClubInfoTip()
     
-    //Focus is it receiving user input or not. Similar to @State property
-    @FocusState private var isFocused: Bool
+    var carryDistanceLimit: Bool {
+        if vm.carryDistance >= 500 {
+            return true
+            ///True means that the button is disabled and cannot be pressed. The text would be displayed grey until filled based criteria
+        }
+        return false
+        ///False means that the button is enabled and can be pressed
+    }
+    
+    var buttonSaveText: String {
+        if carryDistanceLimit {
+            return "Re-enter before saving"
+        } else {
+            return "Save"
+        }
+    }
     
     
+    var doneButtonWithAlert: some View {
+        Button {
+            isFocused = false
+            
+            if vm.carryDistance >= 500 {
+                showAlert = true
+            }
+        } label: {
+            Text("Done")
+        }
+        .alert("Error ⛳️", isPresented: $showAlert) {
+            Button("OK") {}
+        } message: {
+            Text("You cannot input a value greater than 500")
+        }
+    }
     // MARK: - Body
     var body: some View {
         NavigationStack {
@@ -58,6 +91,7 @@ struct ClubDetailsView: View {
                 
                 HStack {
                     TextField("Carry distance (yds)", value: $vm.carryDistance, format: .number)
+                        .foregroundStyle(vm.carryDistance >= 500 ? Color.red : Color.primary)
                         .keyboardType(.numberPad)
                         .focused($isFocused)
                         .onAppear{
@@ -103,11 +137,12 @@ struct ClubDetailsView: View {
                     dismiss()
  
                 } label: {
-                    Text("Save")
+                    Text(buttonSaveText) ///If carryDistance >=500 is true then text would display Re-enter
                         .foregroundStyle(Color.white)
                         .frame(maxWidth: .infinity)
                 }
-                .listRowBackground(Color.blue)
+                .listRowBackground(carryDistanceLimit ? Color.red : Color.blue)
+                .disabled(carryDistanceLimit)
                 
             }
             .onAppear{
@@ -127,11 +162,7 @@ struct ClubDetailsView: View {
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
                     Spacer()
-                    Button {
-                        isFocused = false
-                    } label: {
-                        Text("Done")
-                    }
+                    doneButtonWithAlert
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
