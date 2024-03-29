@@ -52,7 +52,7 @@ struct ClubDetailsView: View {
         .alert("Error ⛳️", isPresented: $showAlert) {
             Button("OK") {}
         } message: {
-            Text("You cannot input a value greater than 500 yds")
+            Text("You cannot input a carry distance of 500 yds or greater")
         }
     }
     // MARK: - Body
