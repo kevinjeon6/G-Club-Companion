@@ -12,8 +12,10 @@ struct ContentView: View {
     
     // MARK: - Properties
     @Environment(\.managedObjectContext) private var moc
-    @FetchRequest<ClubDetailsEntity>(sortDescriptors: [SortDescriptor(\.name)]) private var golfClub
+    @FetchRequest<ClubDetailsEntity>(sortDescriptors: [SortDescriptor(\.carryDistance, order: .reverse), SortDescriptor(\.name)]) private var golfClub
     @EnvironmentObject var vm: ClubDetailManager
+    
+    @State private var isShowingClubSheet = false
     
     ///This is the first time the user opened the app and loaded the data. Then any launches after this will set it to false
     @AppStorage("isFirstTimeLoaded") private var isFirstTimeLoaded = true
@@ -39,6 +41,7 @@ struct ContentView: View {
                         ClubDistanceRowView(clubName: club.name ?? "", carryDistance: club.carryDistance)
                     }
                 }
+                .onDelete(perform: deleteitem )
                 .listRowSeparator(.hidden)
                 .listRowBackground(Color.listBackgroundColor)
             }
@@ -46,11 +49,31 @@ struct ContentView: View {
             .environment(\.defaultMinListRowHeight, 50)
             .toolbarBackground(Color.listBackgroundColor, for: .navigationBar)
             .navigationTitle("Club Distance")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button{
+                        isShowingClubSheet.toggle()
+                    }  label: {
+                        Label("Add Club", systemImage: "plus")
+                    }
+                    .sheet(isPresented: $isShowingClubSheet, content: {
+                        AddClubView()
+                    })
+                }
+            }
             .background(Color.listBackgroundColor)
             .onAppear {
              vm.getPreLoadedJSON("preLoadedData", context: moc, firstTime: &isFirstTimeLoaded)
             }
         }
+    }
+    
+    private func deleteitem(offsets: IndexSet) {
+        for offset in offsets {
+            moc.delete(golfClub[offset])
+        }
+        
+         vm.saveData(context: moc)
     }
 }
 

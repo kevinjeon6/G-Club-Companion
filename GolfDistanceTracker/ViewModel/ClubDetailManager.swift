@@ -10,6 +10,7 @@ import Foundation
 
 class ClubDetailManager: ObservableObject {
     
+    @Published var name = ""
     @Published var notes = ""
     @Published var clubBrand = ""
     @Published var ballBrand = ""
