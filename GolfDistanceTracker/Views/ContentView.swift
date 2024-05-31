@@ -11,22 +11,18 @@ import TipKit
 struct ContentView: View {
     
     // MARK: - Properties
-    @Environment(\.managedObjectContext) private var moc
-    @FetchRequest<ClubDetailsEntity>(sortDescriptors: [SortDescriptor(\.carryDistance, order: .reverse), SortDescriptor(\.name)]) private var golfClub
+    @EnvironmentObject var moc: DataController
     @EnvironmentObject var vm: ClubDetailManager
-    
     @State private var isShowingClubSheet = false
     
     ///This is the first time the user opened the app and loaded the data. Then any launches after this will set it to false
     @AppStorage("isFirstTimeLoaded") private var isFirstTimeLoaded = true
     
-    //Inline Tip View
+    ///Inline Tip View
     private let inputTip = AddClubInfoTip()
 
     // MARK: - Body
     var body: some View {
-        
-        ///This view only display the data
         NavigationStack {
             List{
                 TipView(inputTip)
@@ -34,14 +30,14 @@ struct ContentView: View {
                     .tipBackground(.ultraThinMaterial)
 
                 ///Don't need id for list. Core Data automatically makes the entities conform to Identifiable
-                ForEach(golfClub) { club in
+                ForEach(moc.savedGolfEntities) { club in
                     NavigationLink {
                         ClubDetailsView(clubDetails: club)
                     } label: {
                         ClubDistanceRowView(clubName: club.name ?? "", carryDistance: club.carryDistance)
                     }
                 }
-                .onDelete(perform: deleteitem )
+                .onDelete(perform: moc.deleteClub )
                 .listRowSeparator(.hidden)
                 .listRowBackground(Color.listBackgroundColor)
             }
@@ -63,17 +59,9 @@ struct ContentView: View {
             }
             .background(Color.listBackgroundColor)
             .onAppear {
-             vm.getPreLoadedJSON("preLoadedData", context: moc, firstTime: &isFirstTimeLoaded)
+                moc.getPreLoadedJSON("preLoadedData", firstTime: &isFirstTimeLoaded)
             }
         }
-    }
-    
-    private func deleteitem(offsets: IndexSet) {
-        for offset in offsets {
-            moc.delete(golfClub[offset])
-        }
-        
-         vm.saveData(context: moc)
     }
 }
 
