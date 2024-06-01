@@ -10,9 +10,9 @@ import SwiftUI
 struct AddClubView: View {
     
     // MARK: - Properties
-    @Environment(\.managedObjectContext) private var moc
-    @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var moc: DataController
     @EnvironmentObject var vm: ClubDetailManager
+    @Environment(\.dismiss) var dismiss
     @FocusState private var isFocused: Bool
     
     var body: some View {
@@ -26,9 +26,7 @@ struct AddClubView: View {
                 
                 Section {
                     Button("Save") {
-                        let newClub = ClubDetailsEntity(context: moc)
-                        newClub.name = vm.name
-                        vm.saveData(context: moc)
+                        moc.addClub(club: vm.name)
                         
                         dismiss()
                     }
@@ -51,5 +49,6 @@ struct AddClubView: View {
 
 #Preview {
     AddClubView()
+        .environmentObject(DataController())
         .environmentObject(ClubDetailManager())
 }
