@@ -10,9 +10,9 @@ import TipKit
 
 struct ClubDetailsView: View {
     // MARK: - Properties
-    @Environment(\.dismiss) var dismiss
-    @Environment(\.managedObjectContext) private var moc
+    @EnvironmentObject var moc: DataController
     @EnvironmentObject var vm: ClubDetailManager
+    @Environment(\.dismiss) var dismiss
     ///Focus is it receiving user input or not. Similar to @State property
     @FocusState private var isFocused: Bool
     @State private var showAlert = false
@@ -55,6 +55,7 @@ struct ClubDetailsView: View {
             Text("You cannot input a carry distance of 500 yds or greater")
         }
     }
+    
     // MARK: - Body
     var body: some View {
         NavigationStack {
@@ -121,7 +122,6 @@ struct ClubDetailsView: View {
                 // MARK: - Save Button
                 Button {
                     
-                    
                     clubDetails?.clubBrand = vm.clubBrand
                     clubDetails?.shaftName = vm.shaftName
                     clubDetails?.flex = vm.flex
@@ -131,8 +131,7 @@ struct ClubDetailsView: View {
                     clubDetails?.notes = vm.notes
                    
                     //Save info
-                    
-                    vm.saveData(context: moc)
+                    moc.saveData()
                     //Dismiss after saving
                     dismiss()
  
@@ -176,18 +175,15 @@ struct ClubDetailsView: View {
                         clubDetails?.ballBrand = ""
                         clubDetails?.carryDistance = 0
                         clubDetails?.notes = ""
-                        
-                        
+  
                         //Save info
-                        vm.saveData(context: moc)
-//                        //Dismiss after saving
+                        moc.saveData()
+                       //Dismiss after saving
                         dismiss()
    
                     } label: {
                         Text("Clear")
                     }
-                    
-                    
                 }
             }
         }
