@@ -56,11 +56,19 @@ struct ClubDetailsView: View {
         }
     }
     
+    let loftFormatter: NumberFormatter = {
+        let loftFormatter = NumberFormatter()
+        loftFormatter.numberStyle = .decimal
+        loftFormatter.minimumFractionDigits = 1
+        loftFormatter.maximumFractionDigits = 1
+        return loftFormatter
+    }()
+    
     // MARK: - Body
     var body: some View {
         NavigationStack {
             Form {
-                TextField("Brand name", text: $vm.clubBrand)
+                TextField("Brand name", text: $vm.clubBrandName)
                     .focused($isFocused)
                     .onAppear{
                         UITextField.appearance().clearButtonMode = .whileEditing
@@ -73,15 +81,19 @@ struct ClubDetailsView: View {
                     }
                 
                 Picker("Flex", selection: $vm.flex) {
-                    ForEach(vm.shaftFlexType, id: \.self) {
+                    ForEach(vm.flexOption, id: \.self) {
                         Text($0)
                     }
                 }
                 
-                Picker("Loft", selection: $vm.loft) {
-                    ForEach(vm.wedgeDegrees, id: \.self) {
-                        Text($0)
-                    }
+                HStack {
+                    Text("Loft")
+                    Spacer()
+                    TextField("0", value: $vm.loftValue, formatter: loftFormatter )
+                        .multilineTextAlignment(.trailing)
+                        .focused($isFocused)
+                        .keyboardType(.decimalPad)
+                    Text("°")
                 }
                 
                 TextField("Ball brand", text: $vm.ballBrand)
@@ -122,10 +134,10 @@ struct ClubDetailsView: View {
                 // MARK: - Save Button
                 Button {
                     
-                    clubDetails?.clubBrand = vm.clubBrand
+                    clubDetails?.clubBrandName = vm.clubBrandName
                     clubDetails?.shaftName = vm.shaftName
                     clubDetails?.flex = vm.flex
-                    clubDetails?.loft = vm.loft
+                    clubDetails?.loftValue = vm.loftValue
                     clubDetails?.ballBrand = vm.ballBrand
                     clubDetails?.carryDistance = Int16(vm.carryDistance)
                     clubDetails?.notes = vm.notes
@@ -145,10 +157,10 @@ struct ClubDetailsView: View {
                 
             }
             .onAppear{
-                vm.clubBrand = clubDetails?.clubBrand ?? ""
+                vm.clubBrandName = clubDetails?.clubBrandName ?? ""
                 vm.shaftName = clubDetails?.shaftName ?? ""
                 vm.carryDistance = Int(clubDetails?.carryDistance ?? 0)
-                vm.loft = clubDetails?.loft ?? ""
+                vm.loftValue = clubDetails?.loftValue ?? 0.0
                 vm.flex = clubDetails?.flex ?? ""
                 vm.notes = clubDetails?.notes ?? ""
                 vm.ballBrand = clubDetails?.ballBrand ?? ""
@@ -168,10 +180,10 @@ struct ClubDetailsView: View {
                     
                     // MARK: - Clear button
                     Button {
-                        clubDetails?.clubBrand = ""
+                        clubDetails?.clubBrandName = ""
                         clubDetails?.shaftName = ""
                         clubDetails?.flex = "Regular"
-                        clubDetails?.loft = "N/A"
+                        clubDetails?.loftValue = 0.0
                         clubDetails?.ballBrand = ""
                         clubDetails?.carryDistance = 0
                         clubDetails?.notes = ""
