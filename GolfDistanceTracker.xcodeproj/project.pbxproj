@@ -66,8 +66,8 @@
 			isa = PBXGroup;
 			children = (
 				74AE46BD2A7BE1E700EF5C6F /* ContentView.swift */,
-				74CFCDA32C0A364400BF1454 /* AddClubView.swift */,
 				74AE46C92A7BE6DA00EF5C6F /* ClubDetailsView.swift */,
+				74CFCDA32C0A364400BF1454 /* AddClubView.swift */,
 				744C9AB82A7D8F1700E31EB7 /* ClubDistanceRowView.swift */,
 				74AD56B72B954AAC00028B54 /* CarryDistanceGaugeView.swift */,
 			);

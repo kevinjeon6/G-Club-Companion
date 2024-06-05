@@ -12,7 +12,6 @@ struct ContentView: View {
     
     // MARK: - Properties
     @EnvironmentObject var moc: DataController
-    @EnvironmentObject var vm: ClubDetailManager
     @State private var isShowingClubSheet = false
     
     ///This is the first time the user opened the app and loaded the data. Then any launches after this will set it to false
@@ -68,6 +67,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(DataController())
             .task {
                 try? Tips.configure([
                     .datastoreLocation(.applicationDefault),
