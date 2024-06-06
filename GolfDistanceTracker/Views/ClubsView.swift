@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  ClubsView.swift
 //  GolfDistanceTracker
 //
 //  Created by Kevin Mattocks on 8/3/23.
@@ -8,7 +8,7 @@
 import SwiftUI
 import TipKit
 
-struct ContentView: View {
+struct ClubsView: View {
     
     // MARK: - Properties
     @EnvironmentObject var moc: DataController
@@ -64,9 +64,9 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct ClubsView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ClubsView()
             .environmentObject(DataController())
             .task {
                 try? Tips.configure([

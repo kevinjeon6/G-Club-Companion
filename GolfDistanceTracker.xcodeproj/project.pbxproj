@@ -11,12 +11,16 @@
 		744C9ABB2A7DBC7F00E31EB7 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744C9ABA2A7DBC7F00E31EB7 /* ColorExtension.swift */; };
 		744C9AC52A80628500E31EB7 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744C9AC42A80628500E31EB7 /* DataController.swift */; };
 		744C9AC82A80872E00E31EB7 /* Golf_Distance_Tracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 744C9AC62A80872E00E31EB7 /* Golf_Distance_Tracker.xcdatamodeld */; };
+		7453F8502C1212FD00C283DC /* TabScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7453F84F2C1212FD00C283DC /* TabScreen.swift */; };
+		7453F8532C1224DB00C283DC /* AddCarryDistanceScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7453F8522C1224DB00C283DC /* AddCarryDistanceScreen.swift */; };
+		7453F8552C12250000C283DC /* ShotHistoryScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7453F8542C12250000C283DC /* ShotHistoryScreen.swift */; };
+		7453F8572C12259800C283DC /* AnalysisScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7453F8562C12259800C283DC /* AnalysisScreen.swift */; };
 		74935C872B3F63C100F5F031 /* ClubDetailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74935C862B3F63C100F5F031 /* ClubDetailManager.swift */; };
 		749DB7752A9E81F40057A4A8 /* preLoadedData.json in Resources */ = {isa = PBXBuildFile; fileRef = 749DB7742A9E81F40057A4A8 /* preLoadedData.json */; };
 		749DB77A2A9E85B00057A4A8 /* Club.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749DB7792A9E85B00057A4A8 /* Club.swift */; };
 		74AD56B82B954AAC00028B54 /* CarryDistanceGaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AD56B72B954AAC00028B54 /* CarryDistanceGaugeView.swift */; };
 		74AE46BC2A7BE1E700EF5C6F /* GolfDistanceTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AE46BB2A7BE1E700EF5C6F /* GolfDistanceTrackerApp.swift */; };
-		74AE46BE2A7BE1E700EF5C6F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AE46BD2A7BE1E700EF5C6F /* ContentView.swift */; };
+		74AE46BE2A7BE1E700EF5C6F /* ClubsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AE46BD2A7BE1E700EF5C6F /* ClubsView.swift */; };
 		74AE46C02A7BE1E800EF5C6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74AE46BF2A7BE1E800EF5C6F /* Assets.xcassets */; };
 		74AE46C32A7BE1E800EF5C6F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74AE46C22A7BE1E800EF5C6F /* Preview Assets.xcassets */; };
 		74AE46CA2A7BE6DA00EF5C6F /* ClubDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AE46C92A7BE6DA00EF5C6F /* ClubDetailsView.swift */; };
@@ -29,13 +33,17 @@
 		744C9ABA2A7DBC7F00E31EB7 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		744C9AC42A80628500E31EB7 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		744C9AC72A80872E00E31EB7 /* Golf_Distance_Tracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Golf_Distance_Tracker.xcdatamodel; sourceTree = "<group>"; };
+		7453F84F2C1212FD00C283DC /* TabScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabScreen.swift; sourceTree = "<group>"; };
+		7453F8522C1224DB00C283DC /* AddCarryDistanceScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCarryDistanceScreen.swift; sourceTree = "<group>"; };
+		7453F8542C12250000C283DC /* ShotHistoryScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotHistoryScreen.swift; sourceTree = "<group>"; };
+		7453F8562C12259800C283DC /* AnalysisScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisScreen.swift; sourceTree = "<group>"; };
 		74935C862B3F63C100F5F031 /* ClubDetailManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubDetailManager.swift; sourceTree = "<group>"; };
 		749DB7742A9E81F40057A4A8 /* preLoadedData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = preLoadedData.json; sourceTree = "<group>"; };
 		749DB7792A9E85B00057A4A8 /* Club.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Club.swift; sourceTree = "<group>"; };
 		74AD56B72B954AAC00028B54 /* CarryDistanceGaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarryDistanceGaugeView.swift; sourceTree = "<group>"; };
 		74AE46B82A7BE1E700EF5C6F /* GolfDistanceTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GolfDistanceTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74AE46BB2A7BE1E700EF5C6F /* GolfDistanceTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GolfDistanceTrackerApp.swift; sourceTree = "<group>"; };
-		74AE46BD2A7BE1E700EF5C6F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		74AE46BD2A7BE1E700EF5C6F /* ClubsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubsView.swift; sourceTree = "<group>"; };
 		74AE46BF2A7BE1E800EF5C6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		74AE46C22A7BE1E800EF5C6F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		74AE46C92A7BE6DA00EF5C6F /* ClubDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubDetailsView.swift; sourceTree = "<group>"; };
@@ -65,7 +73,7 @@
 		744C9AB32A7D6B7100E31EB7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				74AE46BD2A7BE1E700EF5C6F /* ContentView.swift */,
+				74AE46BD2A7BE1E700EF5C6F /* ClubsView.swift */,
 				74AE46C92A7BE6DA00EF5C6F /* ClubDetailsView.swift */,
 				74CFCDA32C0A364400BF1454 /* AddClubView.swift */,
 				744C9AB82A7D8F1700E31EB7 /* ClubDistanceRowView.swift */,
@@ -80,6 +88,17 @@
 				744C9ABA2A7DBC7F00E31EB7 /* ColorExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7453F8512C12222E00C283DC /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				7453F84F2C1212FD00C283DC /* TabScreen.swift */,
+				7453F8522C1224DB00C283DC /* AddCarryDistanceScreen.swift */,
+				7453F8562C12259800C283DC /* AnalysisScreen.swift */,
+				7453F8542C12250000C283DC /* ShotHistoryScreen.swift */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		74935C882B3F708E00F5F031 /* ViewModel */ = {
@@ -133,6 +152,7 @@
 				749D0CDD2A87EDF700F1E4F5 /* Core Data */,
 				74935C882B3F708E00F5F031 /* ViewModel */,
 				743553E02A81ABFF00A6D332 /* Model */,
+				7453F8512C12222E00C283DC /* Screens */,
 				744C9AB32A7D6B7100E31EB7 /* Views */,
 				74AE46BF2A7BE1E800EF5C6F /* Assets.xcassets */,
 				74AE46C12A7BE1E800EF5C6F /* Preview Content */,
@@ -230,13 +250,17 @@
 				74935C872B3F63C100F5F031 /* ClubDetailManager.swift in Sources */,
 				744C9AC52A80628500E31EB7 /* DataController.swift in Sources */,
 				744C9AB92A7D8F1700E31EB7 /* ClubDistanceRowView.swift in Sources */,
+				7453F8572C12259800C283DC /* AnalysisScreen.swift in Sources */,
 				74AE46CA2A7BE6DA00EF5C6F /* ClubDetailsView.swift in Sources */,
 				744C9AC82A80872E00E31EB7 /* Golf_Distance_Tracker.xcdatamodeld in Sources */,
-				74AE46BE2A7BE1E700EF5C6F /* ContentView.swift in Sources */,
+				7453F8552C12250000C283DC /* ShotHistoryScreen.swift in Sources */,
+				74AE46BE2A7BE1E700EF5C6F /* ClubsView.swift in Sources */,
 				749DB77A2A9E85B00057A4A8 /* Club.swift in Sources */,
 				74F58C732B7844EC00BE9FF5 /* Tip.swift in Sources */,
+				7453F8532C1224DB00C283DC /* AddCarryDistanceScreen.swift in Sources */,
 				74AE46BC2A7BE1E700EF5C6F /* GolfDistanceTrackerApp.swift in Sources */,
 				74AD56B82B954AAC00028B54 /* CarryDistanceGaugeView.swift in Sources */,
+				7453F8502C1212FD00C283DC /* TabScreen.swift in Sources */,
 				74CFCDA42C0A364400BF1454 /* AddClubView.swift in Sources */,
 				744C9ABB2A7DBC7F00E31EB7 /* ColorExtension.swift in Sources */,
 			);
