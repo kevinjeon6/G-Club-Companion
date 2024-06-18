@@ -11,14 +11,14 @@ struct AddClubView: View {
     
     // MARK: - Properties
     @EnvironmentObject var moc: DataController
-    @EnvironmentObject var vm: ClubDetailManager
+    @EnvironmentObject var clubManager: ClubDetailManager
     @Environment(\.dismiss) var dismiss
     @FocusState private var isFocused: Bool
     
     var body: some View {
         NavigationStack {
             Form {
-                TextField("Club Name", text: $vm.name)
+                TextField("Club Name", text: $clubManager.name)
                     .focused($isFocused)
                     .onAppear{
                         UITextField.appearance().clearButtonMode = .always
@@ -26,7 +26,7 @@ struct AddClubView: View {
                 
                 Section {
                     Button("Save") {
-                        moc.addClub(club: vm.name)
+                        moc.addClub(club: clubManager.name)
                         
                         dismiss()
                     }

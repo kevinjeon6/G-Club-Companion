@@ -16,6 +16,7 @@ class DataController: ObservableObject {
     private let entityName = "ClubDetailsEntity"
     
     @Published var savedGolfEntities: [ClubDetailsEntity] = []
+    @Published var driver: ClubDetailsEntity?
     
     init() {
         container.loadPersistentStores { description, error in

@@ -43,7 +43,7 @@ struct ClubsView: View {
             .listStyle(.plain)
             .environment(\.defaultMinListRowHeight, 50)
             .toolbarBackground(Color.listBackgroundColor, for: .navigationBar)
-            .navigationTitle("Club Distance")
+            .navigationTitle("Clubs")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button{
