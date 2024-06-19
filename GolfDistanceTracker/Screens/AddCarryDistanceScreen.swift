@@ -106,7 +106,7 @@ struct AddCarryDistanceScreen: View {
                     TextField("yds", value: $clubManager.carryDistance, format: .number)
                         .multilineTextAlignment(.trailing)
                         .textFieldStyle(.roundedBorder)
-                        .frame(width: 70)
+                        .frame(width: 80)
                         .keyboardType(.numberPad)
                         .focused($isFocused)
                         .onAppear {
@@ -132,9 +132,7 @@ struct AddCarryDistanceScreen: View {
                     .padding(.bottom, 10)
                 Button{
                     print("Saved distance")
-                    moc.driver?.carryDistance = Int16(clubManager.carryDistance)
-                    moc.saveData()
-                    
+                    moc.addSwing(type: clubManager.swing, yds: clubManager.carryDistance, on: date)           
                 } label: {
                     Text(buttonSaveText)
                         .fontWeight(.semibold)

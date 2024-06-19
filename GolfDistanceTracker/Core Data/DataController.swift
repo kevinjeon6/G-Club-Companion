@@ -65,6 +65,15 @@ class DataController: ObservableObject {
         saveData()
     }
     
+    func addSwing(type: String, yds: Int, on: Date) {
+        let swingType = SwingTypeEntity(context: container.viewContext)
+        swingType.swingType = type
+        swingType.value = Int16(yds)
+        swingType.date = on
+        driver?.addToSwingEntities(swingType)
+        saveData()
+    }
+    
     
     func getPreLoadedJSON(_ file: String, firstTime: inout Bool) -> [ClubDetailsEntity] {
         //Create a URL
