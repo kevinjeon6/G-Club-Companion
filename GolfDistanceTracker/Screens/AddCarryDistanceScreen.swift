@@ -14,6 +14,7 @@ struct AddCarryDistanceScreen: View {
     
     @FocusState var isFocused: Bool
     @State private var showAlert = false
+    @State private var date = Date()
     
     var carryDistanceLimit: Bool {
         if clubManager.carryDistance >= 500 {
@@ -28,7 +29,7 @@ struct AddCarryDistanceScreen: View {
         if carryDistanceLimit {
             return "Re-enter before saving"
         } else {
-            return "Save Shot"
+            return "Enter Shot"
         }
     }
     
@@ -49,10 +50,10 @@ struct AddCarryDistanceScreen: View {
         }
     }
     
-//    @State private var driver: ClubDetailsEntity?
+    
     var body: some View {
         NavigationStack {
-            VStack {
+            VStack(spacing: 10) {
                 HStack {
                     VStack(alignment: .leading) {
                         Text("Club")
@@ -72,10 +73,7 @@ struct AddCarryDistanceScreen: View {
                     .pickerStyle(.menu)
                     .tint(.black)
                 }
-                .padding(8)
-                .background(RoundedRectangle(cornerRadius: 14).fill(Color(.secondarySystemBackground))
-                )
-
+                
                 HStack {
                     VStack(alignment: .leading) {
                         Text("Swing")
@@ -85,6 +83,7 @@ struct AddCarryDistanceScreen: View {
                             .font(.subheadline)
                     }
                     Spacer()
+                    
                     Picker("Swing", selection: $clubManager.swing ) {
                         ForEach(clubManager.swingType, id: \.self) {
                             Text($0)
@@ -93,41 +92,49 @@ struct AddCarryDistanceScreen: View {
                     .pickerStyle(.menu)
                     .tint(.black)
                 }
-                .padding(8)
-                .background(RoundedRectangle(cornerRadius: 14).fill(Color(.secondarySystemBackground))
-                )
                 
-               
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text("Distance")
-                                .font(.title2.bold())
-                            Text("Input distance")
-                                .foregroundStyle(.secondary)
-                                .font(.subheadline)
-                        }
-                        Spacer()
-                        TextField("yds", value: $clubManager.carryDistance, format: .number)
-                            .multilineTextAlignment(.trailing)
-                            .textFieldStyle(.roundedBorder)
-                            .frame(width: 70)
-                            .keyboardType(.numberPad)
-                            .focused($isFocused)
-                            .onAppear {
-                                UITextField.appearance().clearButtonMode = .whileEditing
-                            }
+                
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text("Distance")
+                            .font(.title2.bold())
+                        Text("Input distance")
+                            .foregroundStyle(.secondary)
+                            .font(.subheadline)
                     }
-                    .padding(8)
- 
+                    Spacer()
+                    TextField("yds", value: $clubManager.carryDistance, format: .number)
+                        .multilineTextAlignment(.trailing)
+                        .textFieldStyle(.roundedBorder)
+                        .frame(width: 70)
+                        .keyboardType(.numberPad)
+                        .focused($isFocused)
+                        .onAppear {
+                            UITextField.appearance().clearButtonMode = .whileEditing
+                        }
+                }
                 
-
                 
+                
+                DatePicker(selection: $date, in: ...Date(), displayedComponents: .date) {
+                    VStack(alignment: .leading) {
+                        Text("Date")
+                            .font(.title2.bold())
+                        Text("Input date")
+                            .foregroundStyle(.secondary)
+                            .font(.subheadline)
+                    }
+                }
+                .datePickerStyle(.compact)
+                
+                
+                Divider()
+                    .padding(.bottom, 10)
                 Button{
-//                    moc.addDistance(distance: clubManager.carryDistance)
                     print("Saved distance")
                     moc.driver?.carryDistance = Int16(clubManager.carryDistance)
                     moc.saveData()
-
+                    
                 } label: {
                     Text(buttonSaveText)
                         .fontWeight(.semibold)
@@ -137,7 +144,7 @@ struct AddCarryDistanceScreen: View {
                 .background(carryDistanceLimit ? Color.red : Color.green)
                 .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                 .disabled(carryDistanceLimit)
-
+                
                 Spacer()
                 
             }

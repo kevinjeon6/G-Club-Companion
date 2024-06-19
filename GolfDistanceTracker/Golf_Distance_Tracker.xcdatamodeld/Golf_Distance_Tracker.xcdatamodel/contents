@@ -4,6 +4,7 @@
         <attribute name="ballBrand" optional="YES" attributeType="String"/>
         <attribute name="carryDistance" optional="YES" attributeType="Integer 16" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="clubBrandName" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="flex" optional="YES" attributeType="String"/>
         <attribute name="loftValue" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
