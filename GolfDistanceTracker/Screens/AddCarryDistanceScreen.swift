@@ -14,6 +14,7 @@ struct AddCarryDistanceScreen: View {
     
     @FocusState var isFocused: Bool
     @State private var showAlert = false
+    @State private var didEnterShot = false
     @State private var date = Date()
     
     var carryDistanceLimit: Bool {
@@ -132,7 +133,8 @@ struct AddCarryDistanceScreen: View {
                     .padding(.bottom, 10)
                 Button{
                     print("Saved distance")
-                    moc.addSwing(type: clubManager.swing, yds: clubManager.carryDistance, on: date)           
+                    moc.addSwing(type: clubManager.swing, yds: clubManager.carryDistance, on: date) 
+                    didEnterShot = true
                 } label: {
                     Text(buttonSaveText)
                         .fontWeight(.semibold)
@@ -142,6 +144,9 @@ struct AddCarryDistanceScreen: View {
                 .background(carryDistanceLimit ? Color.red : Color.green)
                 .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                 .disabled(carryDistanceLimit)
+                .alert("Shot Saved", isPresented: $didEnterShot) {
+                    Button("OK") {}
+                } 
                 
                 Spacer()
                 

@@ -17,7 +17,13 @@ struct AnalysisScreen: View {
                 Section {
                     ForEach(swing.viewSwingEntitiesSorted) { item in
                         HStack {
-                            Text(item.swingType ?? "no type")
+                            VStack {
+                                Text(item.swingType ?? "no type")
+                                Text("\(item.date?.formatted(date: .abbreviated, time: .omitted) ?? "")")
+                                    .foregroundStyle(.secondary)
+                                    .font(.caption)
+                            }
+                            
                             Spacer()
                             Text("\(item.value)")
                         }
@@ -25,6 +31,8 @@ struct AnalysisScreen: View {
                 } header: {
                     Text(swing.name ?? "n/a")
                 }
+                .headerProminence(.increased)
+                
             }
             .navigationTitle("Nested")
         }
