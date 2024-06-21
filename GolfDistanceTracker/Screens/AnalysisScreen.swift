@@ -17,17 +17,19 @@ struct AnalysisScreen: View {
                 Section {
                     ForEach(swing.viewSwingEntitiesSorted) { item in
                         HStack {
-                            VStack {
+                            VStack(alignment: .leading) {
                                 Text(item.swingType ?? "no type")
                                 Text("\(item.date?.formatted(date: .abbreviated, time: .omitted) ?? "")")
                                     .foregroundStyle(.secondary)
                                     .font(.caption)
                             }
-                            
                             Spacer()
                             Text("\(item.value)")
                         }
                     }
+                    .onDelete(perform: { indexSet in
+                        moc.deleteSwing(offsets: indexSet, from: swing)
+                    })
                 } header: {
                     Text(swing.name ?? "n/a")
                 }

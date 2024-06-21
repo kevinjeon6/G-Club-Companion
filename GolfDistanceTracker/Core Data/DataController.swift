@@ -74,6 +74,14 @@ class DataController: ObservableObject {
         saveData()
     }
     
+    func deleteSwing(offsets: IndexSet, from swing: ClubDetailsEntity) {
+        for i in offsets {
+            let input = swing.viewSwingEntitiesSorted[i]
+            container.viewContext.delete(input)
+        }
+        saveData()
+    }
+    
     
     func getPreLoadedJSON(_ file: String, firstTime: inout Bool) -> [ClubDetailsEntity] {
         //Create a URL
