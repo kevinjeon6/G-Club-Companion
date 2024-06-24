@@ -64,7 +64,7 @@ struct AddCarryDistanceScreen: View {
                             .font(.subheadline)
                     }
                     Spacer()
-                    
+                    ///moc.driver holds the current selected club when using a picker for the saved entities for the forEach
                     Picker("Club", selection: $moc.driver) {
                         ForEach(moc.savedGolfEntities) { (item: ClubDetailsEntity) in
                             Text(item.name ?? "")
