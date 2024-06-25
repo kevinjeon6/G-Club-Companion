@@ -65,11 +65,10 @@ class DataController: ObservableObject {
         saveData()
     }
     
-    func addSwing(type: String, yds: Int, on: Date) {
+    func addSwing(distance: Int, to today: Date) {
         let swingType = SwingTypeEntity(context: container.viewContext)
-        swingType.swingType = type
-        swingType.value = Int16(yds)
-        swingType.date = on
+        swingType.value = Int16(distance)
+        swingType.dateSubmitted = today
         driver?.addToSwingEntities(swingType)
         saveData()
     }
@@ -100,11 +99,19 @@ class DataController: ObservableObject {
                 let loadedEntity = ClubDetailsEntity(context: container.viewContext)
                 loadedEntity.name = loadedClub.name
                 preloadedGolfClubs.append(loadedEntity)
+                
+                for swing in loadedClub.swingTypes {
+                    let loadedSwingTypeEntity = SwingTypeEntity(context: container.viewContext)
+                    loadedSwingTypeEntity.swingNameType = swing
+                    loadedEntity.addToSwingEntities(loadedSwingTypeEntity)
+                   
+                }
             }
             
             saveData()
             firstTime = false
         }
+    
         return preloadedGolfClubs
     }
     

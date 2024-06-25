@@ -10,4 +10,8 @@ import Foundation
 //Model for JSON data
 struct ClubResponse: Codable, Hashable {
     let name: String
+    let swingTypes: [String]
 }
+
+
+
