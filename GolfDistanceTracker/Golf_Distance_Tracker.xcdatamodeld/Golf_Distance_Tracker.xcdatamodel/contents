@@ -12,8 +12,8 @@
         <relationship name="swingEntities" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="SwingTypeEntity" inverseName="clubdetailsEntity" inverseEntity="SwingTypeEntity"/>
     </entity>
     <entity name="SwingTypeEntity" representedClassName="SwingTypeEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="swingType" optional="YES" attributeType="String"/>
+        <attribute name="dateSubmitted" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="swingNameType" optional="YES" attributeType="String"/>
         <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="clubdetailsEntity" maxCount="1" deletionRule="Nullify" destinationEntity="ClubDetailsEntity" inverseName="swingEntities" inverseEntity="ClubDetailsEntity"/>
     </entity>
