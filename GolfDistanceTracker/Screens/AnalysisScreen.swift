@@ -13,22 +13,22 @@ struct AnalysisScreen: View {
     
     var body: some View {
         NavigationStack {
-            List(moc.savedGolfEntities) {
-                swing in
-                Section {
-                    ForEach(swing.viewSwingEntitiesSorted) {
-                        shot in
-                        NavigationLink {
-                            ShotHistoryScreen(selectedSwingType: shot)
-                        } label: {
-                            Text(shot.swingNameType ?? "N/A")
+            List {
+                ForEach(moc.savedGolfEntities) { swing in
+                    Section {
+                        ForEach(swing.viewSwingEntitiesSorted) {
+                            shot in
+                            NavigationLink {
+                                ShotHistoryScreen(selectedSwingType: shot)
+                            } label: {
+                                Text(shot.swingNameType ?? "N/A")
+                            }
                         }
+                    } header: {
+                        Text(swing.name ?? "n/a")
                     }
-                } header: {
-                    Text(swing.name ?? "n/a")
-                }
                 .headerProminence(.increased)
-                
+                }
             }
             .navigationTitle("Nested")
         }
