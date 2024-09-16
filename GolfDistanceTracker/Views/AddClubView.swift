@@ -29,6 +29,8 @@ struct AddClubView: View {
                         moc.addClub(club: clubManager.name)
                         
                         dismiss()
+                        ///Clears the TextField so if the user tries to add a new club. It won't display what was previously added.
+                        clubManager.name = ""
                     }
                     .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)
