@@ -11,8 +11,7 @@ struct ShotHistoryScreen: View {
     @EnvironmentObject var moc: DataController
     @EnvironmentObject var clubManager: ClubDetailManager
     
-    var selectedSwingType: SwingTypeEntity?
-    
+    var selectedSwingType: SwingTypeEntity
     
     @FocusState var isFocused: Bool
     @State private var showAlert = false
@@ -96,10 +95,11 @@ struct ShotHistoryScreen: View {
                     .padding(.bottom, 10)
                 Button{
                     print("Saved distance")
-                    selectedSwingType?.clubdetailsEntity?.carryDistance = Int16(clubManager.carryDistance)
-                    moc.saveData()
+                    moc.addShotDistance(to: selectedSwingType, distance: clubManager.carryDistance, date: clubManager.date)
                     
                     didEnterShot = true
+                    
+                    clubManager.carryDistance = 0
                 } label: {
                     Text(buttonSaveText)
                         .fontWeight(.semibold)
@@ -114,21 +114,25 @@ struct ShotHistoryScreen: View {
                 }
                 
                 Spacer()
-                List {
-                    ForEach(moc.savedGolfEntities) {
-                        u in
-                        Text("\(u.carryDistance)")
-                    }
-                }
+              
             }
             .padding()
-            .navigationTitle("\(selectedSwingType?.swingNameType ?? "missing")")
+            .navigationTitle("\(selectedSwingType.swingType ?? "missing")")
             .toolbar{
                 ToolbarItemGroup(placement: .keyboard) {
                     Spacer()
                     doneButtonWithAlert
                 }
             }
+            
+            List {
+                ForEach(selectedSwingType.shotArray, id: \.self) {
+                    value in
+                    Text("\(value.distance)")
+                }
+            }
+            
+            
         }
     }
 }
@@ -138,3 +142,15 @@ struct ShotHistoryScreen: View {
 //    ShotHistoryScreen()
 //}
 
+
+
+extension SwingTypeEntity {
+    ///Referenced HWS Core Data Relationship video  
+    ///Converting the NSSet to array of ShotEntity
+    var shotArray: [ShotEntity] {
+        let set = shots as? Set<ShotEntity> ?? []
+        
+        /// >  returns that the most recent input of the carry distance at the top of the array of shots array
+        return set.sorted {$0.dateEntered ?? Date() > $1.dateEntered ?? Date()}
+    }
+}
