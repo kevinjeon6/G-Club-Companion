@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22758" systemVersion="23F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="ClubDetailsEntity" representedClassName="ClubDetailsEntity" syncable="YES" codeGenerationType="class">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23231" systemVersion="24A335" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ClubEntity" representedClassName="ClubEntity" syncable="YES" codeGenerationType="class">
         <attribute name="ballBrand" optional="YES" attributeType="String"/>
         <attribute name="carryDistance" optional="YES" attributeType="Integer 16" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="clubBrandName" optional="YES" attributeType="String"/>
@@ -9,12 +9,16 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
         <attribute name="shaftName" optional="YES" attributeType="String"/>
-        <relationship name="swingEntities" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="SwingTypeEntity" inverseName="clubdetailsEntity" inverseEntity="SwingTypeEntity"/>
+        <relationship name="swingTypes" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="SwingTypeEntity" inverseName="clubdetails" inverseEntity="SwingTypeEntity"/>
+    </entity>
+    <entity name="ShotEntity" representedClassName="ShotEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="dateEntered" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="distance" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="swingTypes" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SwingTypeEntity" inverseName="shots" inverseEntity="SwingTypeEntity"/>
     </entity>
     <entity name="SwingTypeEntity" representedClassName="SwingTypeEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="dateSubmitted" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="swingNameType" optional="YES" attributeType="String"/>
-        <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="clubdetailsEntity" maxCount="1" deletionRule="Nullify" destinationEntity="ClubDetailsEntity" inverseName="swingEntities" inverseEntity="ClubDetailsEntity"/>
+        <attribute name="swingType" optional="YES" attributeType="String"/>
+        <relationship name="clubdetails" maxCount="1" deletionRule="Nullify" destinationEntity="ClubEntity" inverseName="swingTypes" inverseEntity="ClubEntity"/>
+        <relationship name="shots" toMany="YES" deletionRule="Nullify" destinationEntity="ShotEntity" inverseName="swingTypes" inverseEntity="ShotEntity"/>
     </entity>
 </model>

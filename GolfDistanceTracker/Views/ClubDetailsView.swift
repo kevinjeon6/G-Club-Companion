@@ -18,7 +18,7 @@ struct ClubDetailsView: View {
     @State private var showAlert = false
     
     
-    var clubDetails: ClubDetailsEntity?
+    var clubDetails: ClubEntity?
     private let inputTip = AddClubInfoTip()
 
     
