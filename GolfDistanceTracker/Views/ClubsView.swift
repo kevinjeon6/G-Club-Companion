@@ -68,6 +68,7 @@ struct ClubsView_Previews: PreviewProvider {
     static var previews: some View {
         ClubsView()
             .environmentObject(DataController())
+            .environmentObject(ClubDetailManager())
             .task {
                 try? Tips.configure([
                     .datastoreLocation(.applicationDefault),
