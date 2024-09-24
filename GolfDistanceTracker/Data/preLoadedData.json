@@ -1,51 +1,147 @@
 [
   {
-    "name": "Driver"
+    "name": "Driver",
+    "swingTypes": [
+        "Full Swing", 
+        "3/4 Swing",
+        "Half Swing",
+        "Quarter Swing"
+    ]
   },
   {
-    "name": "3 wood"
+    "name": "3 wood",
+    "swingTypes": [
+        "Full Swing",
+        "3/4 Swing",
+        "Half Swing",
+        "Quarter Swing"
+    ]
   },
   {
-    "name": "5 wood"
+    "name": "5 wood",
+    "swingTypes": [
+        "Full Swing",
+        "3/4 Swing",
+        "Half Swing",
+        "Quarter Swing"
+    ]
   },
   {
-    "name": "Hybrid"
+    "name": "Hybrid",
+    "swingTypes": [
+        "Full Swing",
+        "3/4 Swing",
+        "Half Swing",
+        "Quarter Swing"
+    ]
   },
   {
-    "name": "2-iron"
+    "name": "2-iron",
+    "swingTypes": [
+        "Full Swing",
+        "3/4 Swing",
+        "Half Swing",
+        "Quarter Swing"
+    ]
   },
   {
-    "name": "3-iron"
+    "name": "3-iron",
+    "swingTypes": [
+        "Full Swing",
+        "3/4 Swing",
+        "Half Swing",
+        "Quarter Swing"
+    ]
   },
   {
-    "name": "4-iron"
+    "name": "4-iron",
+    "swingTypes": [
+        "Full Swing",
+        "3/4 Swing",
+        "Half Swing",
+        "Quarter Swing"
+    ]
   },
   {
-    "name": "5-iron"
+    "name": "5-iron",
+    "swingTypes": [
+        "Full Swing",
+        "3/4 Swing",
+        "Half Swing",
+        "Quarter Swing"
+    ]
   },
   {
-    "name": "6-iron"
+    "name": "6-iron",
+    "swingTypes": [
+        "Full Swing",
+        "3/4 Swing",
+        "Half Swing",
+        "Quarter Swing"
+    ]
   },
   {
-    "name": "7-iron"
+    "name": "7-iron",
+    "swingTypes": [
+        "Full Swing",
+        "3/4 Swing",
+        "Half Swing",
+        "Quarter Swing"
+    ]
   },
   {
-    "name": "8-iron"
+    "name": "8-iron",
+    "swingTypes": [
+        "Full Swing",
+        "3/4 Swing",
+        "Half Swing",
+        "Quarter Swing"
+    ]
   },
   {
-    "name": "9-iron"
+    "name": "9-iron",
+    "swingTypes": [
+        "Full Swing",
+        "3/4 Swing",
+        "Half Swing",
+        "Quarter Swing"
+    ]
   },
   {
-    "name": "PW"
+    "name": "PW",
+    "swingTypes": [
+        "Full Swing",
+        "3/4 Swing",
+        "Half Swing",
+        "Quarter Swing"
+    ]
   },
   {
-    "name": "GW"
+    "name": "GW",
+    "swingTypes": [
+        "Full Swing",
+        "3/4 Swing",
+        "Half Swing",
+        "Quarter Swing"
+    ]
   },
   {
-    "name": "SW"
+    "name": "SW",
+    "swingTypes": [
+        "Full Swing",
+        "3/4 Swing",
+        "Half Swing",
+        "Quarter Swing"
+    ]
   },
   {
-    "name": "LW"
+    "name": "LW",
+    "swingTypes": [
+        "Full Swing",
+        "3/4 Swing",
+        "Half Swing",
+        "Quarter Swing"
+    ]
   }
 ]
 

@@ -18,43 +18,9 @@ struct ClubDetailsView: View {
     @State private var showAlert = false
     
     
-    var clubDetails: ClubDetailsEntity?
+    var clubDetails: ClubEntity?
     private let inputTip = AddClubInfoTip()
-    
-    var carryDistanceLimit: Bool {
-        if vm.carryDistance >= 500 {
-            return true
-            ///True means that the button is disabled and cannot be pressed. The text would be displayed grey until filled based criteria
-        }
-        return false
-        ///False means that the button is enabled and can be pressed
-    }
-    
-    var buttonSaveText: String {
-        if carryDistanceLimit {
-            return "Re-enter before saving"
-        } else {
-            return "Save"
-        }
-    }
-    
-    
-    var doneButtonWithAlert: some View {
-        Button {
-            isFocused = false
-            
-            if vm.carryDistance >= 500 {
-                showAlert = true
-            }
-        } label: {
-            Text("Done")
-        }
-        .alert("Error ⛳️", isPresented: $showAlert) {
-            Button("OK") {}
-        } message: {
-            Text("You cannot input a carry distance of 500 yds or greater")
-        }
-    }
+
     
     let loftFormatter: NumberFormatter = {
         let loftFormatter = NumberFormatter()
@@ -102,17 +68,6 @@ struct ClubDetailsView: View {
                         UITextField.appearance().clearButtonMode = .whileEditing
                     }
                 
-                HStack {
-                    TextField("Carry distance (yds)", value: $vm.carryDistance, format: .number)
-                        .foregroundStyle(vm.carryDistance >= 500 ? Color.red : Color.primary)
-                        .keyboardType(.numberPad)
-                        .focused($isFocused)
-                        .onAppear{
-                            UITextField.appearance().clearButtonMode = .whileEditing
-                        }
-                    Text("yds")
-                }
-                
                 
                 Section("Notes"){
                     ZStack(alignment: .topLeading) {
@@ -139,7 +94,7 @@ struct ClubDetailsView: View {
                     clubDetails?.flex = vm.flex
                     clubDetails?.loftValue = vm.loftValue
                     clubDetails?.ballBrand = vm.ballBrand
-                    clubDetails?.carryDistance = Int16(vm.carryDistance)
+       
                     clubDetails?.notes = vm.notes
                    
                     //Save info
@@ -148,18 +103,17 @@ struct ClubDetailsView: View {
                     dismiss()
  
                 } label: {
-                    Text(buttonSaveText) ///If carryDistance >=500 is true then text would display Re-enter
+                    Text("Save")
                         .foregroundStyle(Color.white)
                         .frame(maxWidth: .infinity)
                 }
-                .listRowBackground(carryDistanceLimit ? Color.red : Color.blue)
-                .disabled(carryDistanceLimit)
+                .listRowBackground(Color.blue)
+
                 
             }
             .onAppear{
                 vm.clubBrandName = clubDetails?.clubBrandName ?? ""
                 vm.shaftName = clubDetails?.shaftName ?? ""
-                vm.carryDistance = Int(clubDetails?.carryDistance ?? 0)
                 vm.loftValue = clubDetails?.loftValue ?? 0.0
                 vm.flex = clubDetails?.flex ?? ""
                 vm.notes = clubDetails?.notes ?? ""
@@ -173,7 +127,11 @@ struct ClubDetailsView: View {
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
                     Spacer()
-                    doneButtonWithAlert
+                    Button {
+                        isFocused = false
+                    } label: {
+                        Text("Done")
+                    }
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -185,7 +143,6 @@ struct ClubDetailsView: View {
                         clubDetails?.flex = "Regular"
                         clubDetails?.loftValue = 0.0
                         clubDetails?.ballBrand = ""
-                        clubDetails?.carryDistance = 0
                         clubDetails?.notes = ""
   
                         //Save info

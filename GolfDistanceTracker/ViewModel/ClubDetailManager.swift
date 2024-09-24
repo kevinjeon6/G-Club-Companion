@@ -18,7 +18,6 @@ class ClubDetailManager: ObservableObject {
     @Published var loftValue = 0.0
     @Published var flex = "Regular"
     @Published var flexOption = ["Regular", "Stiff", "X Stiff", "Senior", "Ladies"]
-    @Published var swing = "Full Swing"
-    @Published var swingType = ["Full Swing", "3/4 Swing", "Half Swing", "Quarter Swing"]
+    @Published var date = Date()
 
 }

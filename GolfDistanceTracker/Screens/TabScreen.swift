@@ -21,15 +21,10 @@ struct TabScreen: View {
                     Label("Clubs", systemImage: "figure.golf")
                 }.tag(1)
             
-            AddCarryDistanceScreen()
-                .tabItem {
-                    Label("Add Distance", systemImage: "plus.circle.fill")
-                }.tag(2)
-            
             AnalysisScreen()
                 .tabItem {
                     Label("Shot Analysis", systemImage: "list.bullet.rectangle.portrait.fill")
-                }.tag(3)
+                }.tag(2)
         }
     }
 }
