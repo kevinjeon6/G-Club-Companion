@@ -19,6 +19,6 @@
     <entity name="SwingTypeEntity" representedClassName="SwingTypeEntity" syncable="YES" codeGenerationType="class">
         <attribute name="swingType" optional="YES" attributeType="String"/>
         <relationship name="clubdetails" maxCount="1" deletionRule="Nullify" destinationEntity="ClubEntity" inverseName="swingTypes" inverseEntity="ClubEntity"/>
-        <relationship name="shots" toMany="YES" deletionRule="Nullify" destinationEntity="ShotEntity" inverseName="swingTypes" inverseEntity="ShotEntity"/>
+        <relationship name="shots" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ShotEntity" inverseName="swingTypes" inverseEntity="ShotEntity"/>
     </entity>
 </model>

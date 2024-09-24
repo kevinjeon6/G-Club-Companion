@@ -145,12 +145,11 @@ struct ShotHistoryScreen: View {
 
 
 extension SwingTypeEntity {
-    ///Referenced HWS Core Data Relationship video  
+    ///Referenced HWS Core Data Relationship video
     ///Converting the NSSet to array of ShotEntity
     var shotArray: [ShotEntity] {
-        let set = shots as? Set<ShotEntity> ?? []
+        let shot = shots?.array as? [ShotEntity] ?? []
         
-        /// >  returns that the most recent input of the carry distance at the top of the array of shots array
-        return set.sorted {$0.dateEntered ?? Date() > $1.dateEntered ?? Date()}
+        return shot.sorted {$0.dateEntered ?? Date() > $1.dateEntered ?? Date()}
     }
 }
