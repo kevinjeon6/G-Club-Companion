@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  ClubsView.swift
 //  GolfDistanceTracker
 //
 //  Created by Kevin Mattocks on 8/3/23.
@@ -8,7 +8,7 @@
 import SwiftUI
 import TipKit
 
-struct ContentView: View {
+struct ClubsView: View {
     
     // MARK: - Properties
     @EnvironmentObject var moc: DataController
@@ -43,7 +43,7 @@ struct ContentView: View {
             .listStyle(.plain)
             .environment(\.defaultMinListRowHeight, 50)
             .toolbarBackground(Color.listBackgroundColor, for: .navigationBar)
-            .navigationTitle("Club Distance")
+            .navigationTitle("Clubs")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button{
@@ -64,9 +64,9 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct ClubsView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ClubsView()
             .environmentObject(DataController())
             .environmentObject(ClubDetailManager())
             .task {

@@ -16,9 +16,11 @@ struct GolfDistanceTrackerApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ClubsView()
+            TabScreen()
                 .environmentObject(dataController)
                 .environmentObject(clubDetailManager)
+
         }
     }
     
