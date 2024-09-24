@@ -12,7 +12,6 @@
 		744C9AC52A80628500E31EB7 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744C9AC42A80628500E31EB7 /* DataController.swift */; };
 		744C9AC82A80872E00E31EB7 /* Golf_Distance_Tracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 744C9AC62A80872E00E31EB7 /* Golf_Distance_Tracker.xcdatamodeld */; };
 		7453F8502C1212FD00C283DC /* TabScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7453F84F2C1212FD00C283DC /* TabScreen.swift */; };
-		7453F8532C1224DB00C283DC /* AddCarryDistanceScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7453F8522C1224DB00C283DC /* AddCarryDistanceScreen.swift */; };
 		7453F8552C12250000C283DC /* ShotHistoryScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7453F8542C12250000C283DC /* ShotHistoryScreen.swift */; };
 		7453F8572C12259800C283DC /* AnalysisScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7453F8562C12259800C283DC /* AnalysisScreen.swift */; };
 		74935C872B3F63C100F5F031 /* ClubDetailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74935C862B3F63C100F5F031 /* ClubDetailManager.swift */; };
@@ -34,7 +33,6 @@
 		744C9AC42A80628500E31EB7 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		744C9AC72A80872E00E31EB7 /* Golf_Distance_Tracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Golf_Distance_Tracker.xcdatamodel; sourceTree = "<group>"; };
 		7453F84F2C1212FD00C283DC /* TabScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabScreen.swift; sourceTree = "<group>"; };
-		7453F8522C1224DB00C283DC /* AddCarryDistanceScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCarryDistanceScreen.swift; sourceTree = "<group>"; };
 		7453F8542C12250000C283DC /* ShotHistoryScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotHistoryScreen.swift; sourceTree = "<group>"; };
 		7453F8562C12259800C283DC /* AnalysisScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisScreen.swift; sourceTree = "<group>"; };
 		74935C862B3F63C100F5F031 /* ClubDetailManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubDetailManager.swift; sourceTree = "<group>"; };
@@ -94,7 +92,6 @@
 			isa = PBXGroup;
 			children = (
 				7453F84F2C1212FD00C283DC /* TabScreen.swift */,
-				7453F8522C1224DB00C283DC /* AddCarryDistanceScreen.swift */,
 				7453F8562C12259800C283DC /* AnalysisScreen.swift */,
 				7453F8542C12250000C283DC /* ShotHistoryScreen.swift */,
 			);
@@ -257,7 +254,6 @@
 				74AE46BE2A7BE1E700EF5C6F /* ClubsView.swift in Sources */,
 				749DB77A2A9E85B00057A4A8 /* Club.swift in Sources */,
 				74F58C732B7844EC00BE9FF5 /* Tip.swift in Sources */,
-				7453F8532C1224DB00C283DC /* AddCarryDistanceScreen.swift in Sources */,
 				74AE46BC2A7BE1E700EF5C6F /* GolfDistanceTrackerApp.swift in Sources */,
 				74AD56B82B954AAC00028B54 /* CarryDistanceGaugeView.swift in Sources */,
 				7453F8502C1212FD00C283DC /* TabScreen.swift in Sources */,

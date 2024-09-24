@@ -9,32 +9,24 @@ import SwiftUI
 
 struct AnalysisScreen: View {
     @EnvironmentObject var moc: DataController
+    @EnvironmentObject var clubManager: ClubDetailManager
     
     var body: some View {
         NavigationStack {
-            List(moc.savedGolfEntities) {
-                swing in
-                Section {
-                    ForEach(swing.viewSwingEntitiesSorted) { item in
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text(item.swingType ?? "no type")
-                                Text("\(item.date?.formatted(date: .abbreviated, time: .omitted) ?? "")")
-                                    .foregroundStyle(.secondary)
-                                    .font(.caption)
+            List(moc.savedGolfEntities) { swing in
+                    Section {
+                        ForEach(swing.viewSwingSortedEntities) {
+                            shot in
+                            NavigationLink {
+                                ShotHistoryScreen(selectedSwingType: shot)
+                            } label: {
+                                Text(shot.swingType ?? "N/A")
                             }
-                            Spacer()
-                            Text("\(item.value)")
                         }
-                    }
-                    .onDelete(perform: { indexSet in
-                        moc.deleteSwing(offsets: indexSet, from: swing)
-                    })
-                } header: {
-                    Text(swing.name ?? "n/a")
-                }
+                    } header: {
+                        Text(swing.name ?? "n/a")                    
                 .headerProminence(.increased)
-                
+                }
             }
             .navigationTitle("Nested")
         }
@@ -46,20 +38,29 @@ struct AnalysisScreen: View {
 #Preview {
     AnalysisScreen()
         .environmentObject(DataController())
+        .environmentObject(ClubDetailManager())
 }
 
 
-extension ClubDetailsEntity {
+// MARK: - Relationships
+extension ClubEntity {
     
-    var viewSwingEntitiesSorted: [SwingTypeEntity] {
+    var viewSwingSortedEntities: [SwingTypeEntity] {
         //Convert NSOrderedSet to array
-        let swings = swingEntities?.array as? [SwingTypeEntity] ?? []
+
+        ///Need to make the To Many relationship arrangement property to Ordered. If not, the ForEach will display the JSON data (swingTypes array) in a random order
+        let swings = swingTypes?.array as? [SwingTypeEntity] ?? []
         
-        let staticOrder = ["Full Swing", "3/4 Swing", "Half Swing", "Quarter Swing"]
+        ///Static order will make it displayed correctly. Not using a static order will randomize the swing types under the golf club in Shot Analysis tab
+        let staticOrder = [
+            "Full Swing",
+            "3/4 Swing",
+            "Half Swing",
+            "Quarter Swing"
+        ]
         
         ///Keys would be the array of strings. Values are the index
         let staticMap = Dictionary(uniqueKeysWithValues: staticOrder.enumerated().map { ($1, $0) })
-
 
         return swings.sorted {
             let order1 = staticMap[$0.swingType ?? ""] ?? Int.max
