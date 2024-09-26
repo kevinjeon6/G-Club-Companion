@@ -113,22 +113,41 @@ struct ShotHistoryScreen: View {
                 }
                 
                 Spacer()
-            
-                List {
-                    ForEach(selectedSwingType.shotArray, id: \.self) {
-                        value in
-                        
+                
+                VStack(spacing: 4) {
+                    VStack(alignment: .leading) {
+                        Text("History")
                         HStack {
-                            Text("\(value.distance) yds")
+                            Text("Shot")
                             Spacer()
-                            Text("\(value.dateEntered ?? Date(), format: .dateTime.year().month().day())")
-                                .foregroundStyle(.secondary)
-                                .font(.caption)
+                            Text("Distance")
+                            Spacer()
+                            Text("Date")
+                        }
+                    }
+                    
+                    ScrollView {
+                        ForEach(selectedSwingType.shotArray, id: \.self) {
+                            value in
+
+                                HStack {
+                                    ///Finding the position of an element in a collection and displaying the index of the collection (subscripting)
+                                    if let index = selectedSwingType.shotArray.firstIndex(of: value) {
+                                        Text("\(index + 1)")
+                                    }
+                                    Spacer()
+                                    Text("\(value.distance)")
+                                    Spacer()
+                                    Text("\(value.dateEntered ?? Date(), format: .dateTime.year().month().day())")
+                                        .foregroundStyle(.secondary)
+                                        .font(.caption)
+                                }
+                            
                         }
                     }
                 }
-                .listStyle(.inset)
-                .padding(.top, 10)
+                .padding()
+                .background(RoundedRectangle(cornerRadius: 12).fill(Color(.secondarySystemBackground)))
               
             }
             .padding()
