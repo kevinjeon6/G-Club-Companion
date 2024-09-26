@@ -54,7 +54,6 @@ struct ShotHistoryScreen: View {
     
     
     var body: some View {
-        NavigationStack {
             VStack(spacing: 10) {
                 HStack {
                     VStack(alignment: .leading) {
@@ -114,6 +113,22 @@ struct ShotHistoryScreen: View {
                 }
                 
                 Spacer()
+            
+                List {
+                    ForEach(selectedSwingType.shotArray, id: \.self) {
+                        value in
+                        
+                        HStack {
+                            Text("\(value.distance) yds")
+                            Spacer()
+                            Text("\(value.dateEntered ?? Date(), format: .dateTime.year().month().day())")
+                                .foregroundStyle(.secondary)
+                                .font(.caption)
+                        }
+                    }
+                }
+                .listStyle(.inset)
+                .padding(.top, 10)
               
             }
             .padding()
@@ -123,17 +138,7 @@ struct ShotHistoryScreen: View {
                     Spacer()
                     doneButtonWithAlert
                 }
-            }
-            
-            List {
-                ForEach(selectedSwingType.shotArray, id: \.self) {
-                    value in
-                    Text("\(value.distance)")
-                }
-            }
-            
-            
-        }
+            }   
     }
 }
 

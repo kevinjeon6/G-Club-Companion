@@ -28,7 +28,7 @@ struct AnalysisScreen: View {
                 .headerProminence(.increased)
                 }
             }
-            .navigationTitle("Nested")
+            .navigationTitle("Shot Overview")
         }
     }
 }
