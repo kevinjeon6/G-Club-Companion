@@ -23,6 +23,7 @@
 		74AE46C02A7BE1E800EF5C6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74AE46BF2A7BE1E800EF5C6F /* Assets.xcassets */; };
 		74AE46C32A7BE1E800EF5C6F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74AE46C22A7BE1E800EF5C6F /* Preview Assets.xcassets */; };
 		74AE46CA2A7BE6DA00EF5C6F /* ClubDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AE46C92A7BE6DA00EF5C6F /* ClubDetailsView.swift */; };
+		74BCD9372CA5AF1700B349F5 /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BCD9362CA5AF1700B349F5 /* CoreDataExtensions.swift */; };
 		74CFCDA42C0A364400BF1454 /* AddClubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CFCDA32C0A364400BF1454 /* AddClubView.swift */; };
 		74F58C732B7844EC00BE9FF5 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F58C722B7844EC00BE9FF5 /* Tip.swift */; };
 /* End PBXBuildFile section */
@@ -45,6 +46,7 @@
 		74AE46BF2A7BE1E800EF5C6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		74AE46C22A7BE1E800EF5C6F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		74AE46C92A7BE6DA00EF5C6F /* ClubDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubDetailsView.swift; sourceTree = "<group>"; };
+		74BCD9362CA5AF1700B349F5 /* CoreDataExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataExtensions.swift; sourceTree = "<group>"; };
 		74CFCDA32C0A364400BF1454 /* AddClubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClubView.swift; sourceTree = "<group>"; };
 		74F58C722B7844EC00BE9FF5 /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				744C9ABA2A7DBC7F00E31EB7 /* ColorExtension.swift */,
+				74BCD9362CA5AF1700B349F5 /* CoreDataExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 				7453F8572C12259800C283DC /* AnalysisScreen.swift in Sources */,
 				74AE46CA2A7BE6DA00EF5C6F /* ClubDetailsView.swift in Sources */,
 				744C9AC82A80872E00E31EB7 /* Golf_Distance_Tracker.xcdatamodeld in Sources */,
+				74BCD9372CA5AF1700B349F5 /* CoreDataExtensions.swift in Sources */,
 				7453F8552C12250000C283DC /* ShotHistoryScreen.swift in Sources */,
 				74AE46BE2A7BE1E700EF5C6F /* ClubsView.swift in Sources */,
 				749DB77A2A9E85B00057A4A8 /* Club.swift in Sources */,

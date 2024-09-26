@@ -144,12 +144,3 @@ struct ShotHistoryScreen: View {
 
 
 
-extension SwingTypeEntity {
-    ///Referenced HWS Core Data Relationship video
-    ///Converting the NSSet to array of ShotEntity
-    var shotArray: [ShotEntity] {
-        let shot = shots?.array as? [ShotEntity] ?? []
-        
-        return shot.sorted {$0.dateEntered ?? Date() > $1.dateEntered ?? Date()}
-    }
-}
