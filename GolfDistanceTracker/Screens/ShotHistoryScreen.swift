@@ -116,33 +116,31 @@ struct ShotHistoryScreen: View {
                 
                 VStack(spacing: 4) {
                     VStack(alignment: .leading) {
-                        Text("History")
+                        Text("Shot History")
                         HStack {
-                            Text("Shot")
+                            Text("Number")
                             Spacer()
-                            Text("Distance")
-                            Spacer()
-                            Text("Date")
+                            Text("Distance (yds)")
                         }
                     }
                     
                     ScrollView {
                         ForEach(selectedSwingType.shotArray, id: \.self) {
                             value in
-
-                                HStack {
-                                    ///Finding the position of an element in a collection and displaying the index of the collection (subscripting)
-                                    if let index = selectedSwingType.shotArray.firstIndex(of: value) {
-                                        Text("\(index + 1)")
-                                    }
-                                    Spacer()
-                                    Text("\(value.distance)")
-                                    Spacer()
-                                    Text("\(value.dateEntered ?? Date(), format: .dateTime.year().month().day())")
-                                        .foregroundStyle(.secondary)
-                                        .font(.caption)
-                                }
                             
+                            HStack {
+                                ///Finding the position of an element in a collection and displaying the index of the collection (subscripting)
+                                if let index = selectedSwingType.shotArray.firstIndex(of: value) {
+                                    Text("\(index + 1) ")
+                                }
+                                Spacer()
+
+                                Text("\(value.distance)")
+                                    .fontWeight(.heavy)
+                                Text("\(value.dateEntered ?? Date(), format: .dateTime.year().month().day())")
+                                    .foregroundStyle(.secondary)
+                                    .font(.caption2)
+                            }
                         }
                     }
                 }
