@@ -47,3 +47,12 @@ extension SwingTypeEntity {
         return shot.sorted {$0.dateEntered ?? Date() > $1.dateEntered ?? Date()}
     }
 }
+
+extension SwingTypeEntity {
+    var avgDistance: Int {
+        
+        let totalDistance = shotArray.reduce(0) { $0 + $1.distance }
+        
+        return shotArray.isEmpty ? 0 : Int(totalDistance) / shotArray.count
+    }
+}

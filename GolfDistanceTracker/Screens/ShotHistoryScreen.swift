@@ -124,7 +124,7 @@ struct ShotHistoryScreen: View {
                         }
                     }
                     
-                    ScrollView {
+                    List {
                         ForEach(selectedSwingType.shotArray, id: \.self) {
                             value in
                             
@@ -143,10 +143,8 @@ struct ShotHistoryScreen: View {
                             }
                         }
                     }
+                    .listStyle(.plain)
                 }
-                .padding()
-                .background(RoundedRectangle(cornerRadius: 12).fill(Color(.secondarySystemBackground)))
-              
             }
             .padding()
             .navigationTitle("\(selectedSwingType.swingType ?? "missing")")

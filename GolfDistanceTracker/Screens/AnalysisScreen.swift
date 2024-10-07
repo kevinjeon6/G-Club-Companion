@@ -20,7 +20,12 @@ struct AnalysisScreen: View {
                             NavigationLink {
                                 ShotHistoryScreen(selectedSwingType: shot)
                             } label: {
-                                Text(shot.swingType ?? "N/A")
+                                //TODO: Add logic to display values
+                                HStack {
+                                    Text(shot.swingType ?? "N/A")
+                                    Spacer()
+                                    Text("369 yds")
+                                }
                             }
                         }
                     } header: {
