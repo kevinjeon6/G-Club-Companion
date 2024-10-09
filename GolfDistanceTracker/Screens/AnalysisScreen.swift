@@ -24,7 +24,7 @@ struct AnalysisScreen: View {
                                 HStack {
                                     Text(shot.swingType ?? "N/A")
                                     Spacer()
-                                    Text("369 yds")
+                                    Text("\(shot.avgDistance) yds")
                                 }
                             }
                         }

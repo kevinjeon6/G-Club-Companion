@@ -38,21 +38,20 @@ extension ClubEntity {
 
 
 
-// MARK: - Ordering the shots that are entered. Putting the most recent at the top of a List
+// MARK: - SwingTypeEntity Extension
 extension SwingTypeEntity {
+    ///Ordering the shots that are entered. Putting the most recent at the top of a List
     ///Converting the NSSet to array of ShotEntity
     var shotArray: [ShotEntity] {
         let shot = shots?.array as? [ShotEntity] ?? []
-        
         return shot.sorted {$0.dateEntered ?? Date() > $1.dateEntered ?? Date()}
     }
-}
-
-extension SwingTypeEntity {
+    
+    
+    ///Calculating the average distance from the shots entered
     var avgDistance: Int {
-        
         let totalDistance = shotArray.reduce(0) { $0 + $1.distance }
-        
         return shotArray.isEmpty ? 0 : Int(totalDistance) / shotArray.count
     }
 }
+
