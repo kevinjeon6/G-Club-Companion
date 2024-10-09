@@ -54,7 +54,6 @@ struct ShotHistoryScreen: View {
     
     
     var body: some View {
-        NavigationStack {
             VStack(spacing: 10) {
                 HStack {
                     VStack(alignment: .leading) {
@@ -114,7 +113,38 @@ struct ShotHistoryScreen: View {
                 }
                 
                 Spacer()
-              
+                
+                VStack(spacing: 4) {
+                    VStack(alignment: .leading) {
+                        Text("Shot History")
+                        HStack {
+                            Text("Number")
+                            Spacer()
+                            Text("Distance (yds)")
+                        }
+                    }
+                    
+                    List {
+                        ForEach(selectedSwingType.shotArray, id: \.self) {
+                            value in
+                            
+                            HStack {
+                                ///Finding the position of an element in a collection and displaying the index of the collection (subscripting)
+                                if let index = selectedSwingType.shotArray.firstIndex(of: value) {
+                                    Text("\(index + 1) ")
+                                }
+                                Spacer()
+
+                                Text("\(value.distance)")
+                                    .fontWeight(.heavy)
+                                Text("\(value.dateEntered ?? Date(), format: .dateTime.year().month().day())")
+                                    .foregroundStyle(.secondary)
+                                    .font(.caption2)
+                            }
+                        }
+                    }
+                    .listStyle(.plain)
+                }
             }
             .padding()
             .navigationTitle("\(selectedSwingType.swingType ?? "missing")")
@@ -123,17 +153,7 @@ struct ShotHistoryScreen: View {
                     Spacer()
                     doneButtonWithAlert
                 }
-            }
-            
-            List {
-                ForEach(selectedSwingType.shotArray, id: \.self) {
-                    value in
-                    Text("\(value.distance)")
-                }
-            }
-            
-            
-        }
+            }   
     }
 }
 
@@ -144,13 +164,3 @@ struct ShotHistoryScreen: View {
 
 
 
-extension SwingTypeEntity {
-    ///Referenced HWS Core Data Relationship video  
-    ///Converting the NSSet to array of ShotEntity
-    var shotArray: [ShotEntity] {
-        let set = shots as? Set<ShotEntity> ?? []
-        
-        /// >  returns that the most recent input of the carry distance at the top of the array of shots array
-        return set.sorted {$0.dateEntered ?? Date() > $1.dateEntered ?? Date()}
-    }
-}
