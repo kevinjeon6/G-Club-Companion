@@ -43,8 +43,18 @@ extension SwingTypeEntity {
     ///Ordering the shots that are entered. Putting the most recent at the top of a List
     ///Converting the NSSet to array of ShotEntity
     var shotArray: [ShotEntity] {
-        let shot = shots?.array as? [ShotEntity] ?? []
-        return shot.sorted {$0.dateEntered ?? Date() > $1.dateEntered ?? Date()}
+        
+        get {
+            var shot = shots?.array as? [ShotEntity] ?? []
+            return shot.sorted {$0.dateEntered ?? Date() > $1.dateEntered ?? Date()}
+            
+        }
+        set {
+            ///Converting the NSOrderedSet to an array of ShotEntity
+            ///Using NSOrderedSet because of the shots?.array and because the Ordered is selected in Arragement in the relationships
+            shots = NSOrderedSet(array: newValue.sorted { $0.dateEntered ?? Date() > $1.dateEntered ?? Date() })
+        }
+        
     }
     
     
