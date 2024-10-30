@@ -16,7 +16,7 @@ struct TabScreen: View {
     var body: some View {
         TabView(selection: $selectedTab) {
             
-            ClubsView()
+            ClubsScreen()
                 .tabItem {
                     Label("Clubs", systemImage: "figure.golf")
                 }.tag(1)

@@ -8,7 +8,7 @@
 import SwiftUI
 import TipKit
 
-struct ClubsView: View {
+struct ClubsScreen: View {
     
     // MARK: - Properties
     @EnvironmentObject var moc: DataController
@@ -64,9 +64,9 @@ struct ClubsView: View {
     }
 }
 
-struct ClubsView_Previews: PreviewProvider {
+struct ClubsScreen_Previews: PreviewProvider {
     static var previews: some View {
-        ClubsView()
+        ClubsScreen()
             .environmentObject(DataController())
             .environmentObject(ClubDetailManager())
             .task {

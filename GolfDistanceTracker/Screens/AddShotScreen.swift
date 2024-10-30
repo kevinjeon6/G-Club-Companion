@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ShotHistoryScreen: View {
+struct AddShotScreen: View {
     @EnvironmentObject var moc: DataController
     @EnvironmentObject var clubManager: ClubDetailManager
     
@@ -122,28 +122,46 @@ struct ShotHistoryScreen: View {
                             Spacer()
                             Text("Distance (yds)")
                         }
+                        Divider()
                     }
                     
-                    List {
-                        ForEach(selectedSwingType.shotArray, id: \.self) {
-                            value in
-                            
-                            HStack {
-                                ///Finding the position of an element in a collection and displaying the index of the collection (subscripting)
-                                if let index = selectedSwingType.shotArray.firstIndex(of: value) {
-                                    Text("\(index + 1) ")
+                    if selectedSwingType.shotArray.isEmpty {
+                        VStack {
+                            Text("There are no shots entered yet.")
+                                .font(.title)
+                                .fontWeight(.semibold)
+                                .padding(.top, 20)
+                                .multilineTextAlignment(.center)
+                        }
+                        Spacer()
+                    } else {
+                        List {
+                            ForEach(selectedSwingType.shotArray, id: \.self) {
+                                value in
+                                
+                                HStack {
+                                    ///Finding the position of an element in a collection and displaying the index of the collection (subscripting)
+                                    if let index = selectedSwingType.shotArray.firstIndex(of: value) {
+                                        Text("\(index + 1) ")
+                                    }
+                                    Spacer()
+                                    
+                                    Text("\(value.distance)")
+                                        .fontWeight(.heavy)
+                                    Text("\(value.dateEntered ?? Date(), format: .dateTime.year().month().day())")
+                                        .foregroundStyle(.secondary)
+                                        .font(.caption2)
                                 }
-                                Spacer()
-
-                                Text("\(value.distance)")
-                                    .fontWeight(.heavy)
-                                Text("\(value.dateEntered ?? Date(), format: .dateTime.year().month().day())")
-                                    .foregroundStyle(.secondary)
-                                    .font(.caption2)
+                            }
+                            .onDelete { IndexSet in
+                                for index in IndexSet {
+                                    selectedSwingType.removeFromShots(at: index)
+                                    moc.saveData()
+                                }
                             }
                         }
+                        .listStyle(.plain)
                     }
-                    .listStyle(.plain)
                 }
             }
             .padding()
@@ -153,13 +171,22 @@ struct ShotHistoryScreen: View {
                     Spacer()
                     doneButtonWithAlert
                 }
-            }   
+                
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        // MARK: - TODO: Clear all shots from shot history
+                        print("Shots are all deleted")
+                    } label: {
+                        Text("Clear all")
+                    }
+                }
+            }
     }
 }
 
 
 //#Preview {
-//    ShotHistoryScreen()
+//    AddShotScreen()
 //}
 
 

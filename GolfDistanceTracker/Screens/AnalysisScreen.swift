@@ -18,7 +18,7 @@ struct AnalysisScreen: View {
                         ForEach(swing.viewSwingSortedEntities) {
                             shot in
                             NavigationLink {
-                                ShotHistoryScreen(selectedSwingType: shot)
+                                AddShotScreen(selectedSwingType: shot)
                             } label: {
                                 //TODO: Add logic to display values
                                 HStack {
