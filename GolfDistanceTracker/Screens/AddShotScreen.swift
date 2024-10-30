@@ -52,6 +52,16 @@ struct AddShotScreen: View {
         }
     }
     
+    var clearAllButton: some View {
+        Button {
+            print("Shots are all deleted")
+            selectedSwingType.shotArray.removeAll()
+            moc.saveData()
+        } label: {
+            Text("Clear all")
+        }
+    }
+    
     
     var body: some View {
             VStack(spacing: 10) {
@@ -132,6 +142,7 @@ struct AddShotScreen: View {
                                 .fontWeight(.semibold)
                                 .padding(.top, 20)
                                 .multilineTextAlignment(.center)
+                                .minimumScaleFactor(0.5)
                         }
                         Spacer()
                     } else {
@@ -173,12 +184,7 @@ struct AddShotScreen: View {
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        // MARK: - TODO: Clear all shots from shot history
-                        print("Shots are all deleted")
-                    } label: {
-                        Text("Clear all")
-                    }
+                    clearAllButton
                 }
             }
     }

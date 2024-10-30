@@ -20,7 +20,6 @@ struct AnalysisScreen: View {
                             NavigationLink {
                                 AddShotScreen(selectedSwingType: shot)
                             } label: {
-                                //TODO: Add logic to display values
                                 HStack {
                                     Text(shot.swingType ?? "N/A")
                                     Spacer()
@@ -30,8 +29,8 @@ struct AnalysisScreen: View {
                         }
                     } header: {
                         Text(swing.name ?? "n/a")                    
-                .headerProminence(.increased)
                 }
+                .headerProminence(.increased)
             }
             .navigationTitle("Shot Overview")
         }
